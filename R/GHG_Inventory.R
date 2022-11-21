@@ -1,4 +1,4 @@
-#' Open Carbon Ledger
+#' ghgtools
 #'
 #' Calculate a GHG Inventory
 #' @param Activity_Data Energy & Activity Data
