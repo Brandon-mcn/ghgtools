@@ -1,6 +1,6 @@
 #' ghgtools
 #'
-#' Calculate a GHG Inventory
+#' Open Source GHG Accounting Tools
 #' @param Activity_Data Energy & Activity Data
 #' @return The GHG emissions of the activity
 #' @examples 

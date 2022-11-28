@@ -1,4 +1,5 @@
-Package: OpenCarbonLedger
+Package: ghgtoolsd
 Type: Package
-Title: Open Carbon Ledger
-Version: 0.0.1
+Title: Open Source GHG Accounting Tools
+Version: 0.0.1.0
+RoxygenNote: 7.2.2

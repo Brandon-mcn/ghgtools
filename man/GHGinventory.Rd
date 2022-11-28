@@ -2,7 +2,7 @@
 % Please edit documentation in R/GHG_Inventory.R
 \name{GHGinventory}
 \alias{GHGinventory}
-\title{GHG_Inventory}
+\title{ghgtools}
 \usage{
 GHGinventory(Activity_Data)
 }
@@ -13,9 +13,9 @@ GHGinventory(Activity_Data)
 The GHG emissions of the activity
 }
 \description{
-Calculate a GHG Inventory
+Open Source GHG Accounting Tools
 }
 \examples{
-GHG1 <- GHG_Inventory(50);
-GHG2 <- GHGInventory( c(50, 63, 23) );
+GHG1 <- GHGinventory(50);
+GHG2 <- GHGinventory( c(50, 63, 23) );
 }
