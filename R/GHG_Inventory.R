@@ -1,12 +1,11 @@
 #' ghgtools
 #'
-#' Open Source GHG Accounting Tools
+#' GHG_RawData requires correctly formatted Activity Data, Asset Portfolio, and Emission Factor Library to exist in your repository. Please visit ghgtools.io for detailed instructions and resources. 
 #' 
-#' @param Activity_Data Energy & Activity Data
-#' @return The GHG emissions of the activity
-#' @examples 
-#' GHG1 <- GHGinventory(50);
-#' GHG2 <- GHGinventory( c(50, 63, 23) );
+#' @param GWP Select your desired global warming potentials (GWPs). Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"
+#' @return Two data sets are written to a csv file in your repository. 
+#' @return The first is an error report for records of activity data that failed to calculate GHG emissions properly. Please review this file carefully and make any necessary changes to your activity data and/or asset portfolio.
+#' @return The second data set contains the GHG emissions for each record of activity data that passed through the function successfully. 
 #' @export
 GHG_RawData <- function(GWP){
   

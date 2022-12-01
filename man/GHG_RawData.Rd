@@ -7,15 +7,15 @@
 GHG_RawData(GWP)
 }
 \arguments{
-\item{Activity_Data}{Energy & Activity Data}
+\item{GWP}{Select your desired global warming potentials (GWPs). Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"}
 }
 \value{
-The GHG emissions of the activity
+Two data sets are written to a csv file in your repository.
+
+The first is an error report for records of activity data that failed to calculate GHG emissions properly. Please review this file carefully and make any necessary changes to your activity data and/or asset portfolio.
+
+The second data set contains the GHG emissions for each record of activity data that passed through the function successfully.
 }
 \description{
-Open Source GHG Accounting Tools
-}
-\examples{
-GHG1 <- GHGinventory(50);
-GHG2 <- GHGinventory( c(50, 63, 23) );
+GHG_RawData requires correctly formatted Activity Data, Asset Portfolio, and Emission Factor Library to exist in your repository. Please visit ghgtools.io for detailed instructions and resources.
 }
