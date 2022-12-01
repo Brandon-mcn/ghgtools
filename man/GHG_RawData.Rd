@@ -17,5 +17,5 @@ The first is an error report for records of activity data that failed to calcula
 The second data set contains the GHG emissions for each record of activity data that passed through the function successfully.
 }
 \description{
-GHG_RawData requires correctly formatted Activity Data, Asset Portfolio, and Emission Factor Library to exist in your repository. Please visit ghgtools.io for detailed instructions and resources.
+GHG_RawData requires correctly formatted **Activity Data, Asset Portfolio, and Emission Factor Library** to exist in your repository. Please visit ghgtools.io for detailed instructions and resources.
 }
