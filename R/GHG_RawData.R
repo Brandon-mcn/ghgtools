@@ -91,8 +91,6 @@ GHG_RawData <- function(GWP){
   GHG_FullRawData <- GHGrawdata %>% 
     filter(!is.na(MetricTonsCO2e)) %>% 
     write_excel_csv("GHG_RawData.csv")
-  
-  return(head(GHG_FullRawData))
 }
 
 #' GHG Annual Report
