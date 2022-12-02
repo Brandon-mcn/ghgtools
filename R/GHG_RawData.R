@@ -1,6 +1,6 @@
-#' ghgtools
+#' GHG Raw Data
 #'
-#' GHG_RawData requires correctly formatted **Activity Data, Asset Portfolio, and Emission Factor Library** to exist in your repository. Please visit ghgtools.io for detailed instructions and resources. 
+#' GHG_RawData requires correctly formatted **Activity Data, Asset Portfolio, and Emission Factor Library** to exist in your repository. Please visit [ghgtools.io](https://www.ghgtools.io/tools/) for detailed instructions and resources. 
 #' 
 #' @param GWP Select your desired global warming potentials (GWPs). Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"
 #' @return Two data sets are written to a csv file in your repository. 
@@ -94,4 +94,6 @@ GHG_RawData <- function(GWP){
   
   return(head(GHG_FullRawData))
 }
+
+
 
