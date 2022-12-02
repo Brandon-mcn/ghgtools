@@ -95,5 +95,15 @@ GHG_RawData <- function(GWP){
   return(head(GHG_FullRawData))
 }
 
-
-
+#' GHG Annual Report
+#'
+#' GHG_Report requires a **GHG_RawData.csv** file to exist in your repository. This file is generated using the *GHG_RawData* function. Please visit [ghgtools.io](https://www.ghgtools.io/tools/) for detailed instructions and resources. 
+#' 
+#' @param ReportingYear Select the year you wish to generate the GHG report for. 
+#' @return This function is a component of the GHG Inventory Report repository. 
+#' @export
+GHG_AnnualReport <- function(ReportingYear){
+  data <- read_csv("GHG_RawData.csv") %>% 
+    filter(Year == ReportingYear) %>% 
+  write_excel_csv("GHG_AnnualReport.csv")
+}
