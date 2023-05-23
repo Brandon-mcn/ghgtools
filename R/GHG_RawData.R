@@ -15,7 +15,7 @@ GHG_RawData <- function(GWP){
   
   #load in emission factor library and filter out extra columns
   
-  EFL <-  read_excel("ghgtools_EFL.xlsx", sheet = "EFL") %>% 
+  EFL <-  read_excel("OpenEFL.xlsx", sheet = "EFL") %>% 
     select(-c("Vendor", "ProductID", "EFStartDate", "EFRetireDate")) %>% 
     select(-c("CO2_SourceUnit.per.UOM", "CH4_SourceUnit.per.UOM",	"N2O_SourceUnit.per.UOM", "AUXCO2e_SourceUnit.per.UOM",	"GHGSourceUnit", "Validated?")) %>% 
     select(-starts_with("SubCat"))
