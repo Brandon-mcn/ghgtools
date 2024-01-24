@@ -1,3 +1,2 @@
-^.*\.Rproj$
+^ghgtools\.Rproj$
 ^\.Rproj\.user$
-notebook*
