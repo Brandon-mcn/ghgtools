@@ -1,5 +1,5 @@
 Package: ghgtools
-Title: What the Package Does (One Line, Title Case)
+Title: Standardized GHG Accounting
 Version: 0.0.0.9000
 Authors@R: 
     person("Brandon", "McNamara", , "bm2484@nau.edu", role = c("aut", "cre"))
