@@ -9,86 +9,100 @@
 #' @export
 ghg_rawdata <- function(GWP){
 
-  #load in Asset Portfolio
+  #load required packages
 
-  AssetPortfolio <- read_excel("ghgtools_AssetPortfolio.xlsx", sheet = "AssetPortfolio")
+  if (!require("pacman")) install.packages("pacman")
+  library(pacman)
+  pacman::p_load(readxl, magrittr, tidyverse, lubridate, devtools, googlesheets4)
 
-  #load in emission factor library and filter out extra columns
+  #load emission factor library from google sheets and create csv in repository
 
-  EFL <-  read_excel("OpenEFL.xlsx", sheet = "EFL") %>%
-    select(-c("Vendor", "ProductID", "EFStartDate", "EFRetireDate")) %>%
-    select(-c("CO2_SourceUnit.per.UOM", "CH4_SourceUnit.per.UOM",	"N2O_SourceUnit.per.UOM", "AUXCO2e_SourceUnit.per.UOM",	"GHGSourceUnit", "Validated?")) %>%
-    select(-starts_with("SubCat"))
+  EFL <- read_sheet("1CIyUsINOLlQZnuRGZlPpFMLAuq3RHOoSvs3u6KMUfG0","EFL") %>%
+    write_excel_csv("EFL.csv")
 
-  #load in scope type mapping
+  #load asset portfolio from google sheets and create csv in repository
 
-  ScopeType <-  read_excel("OpenEFL.xlsx", sheet = "ScopeType")
+  AssetPortfolio <- read_sheet("1TGh_Q29n7yfnuZRb_yOtqonyPFAymflXyA_mWukOTBA") %>%
+    write_excel_csv("Asset_Portfolio.csv")
+
+  #load activity data from google sheets and create csv in repository
+
+  ActivityData <- read_sheet("1xxVNpq_QWKLtEHW6ty3-bGTXmtHaKXRqF73q88Ey2mU") %>%
+    write_excel_csv("Activity_Data.csv")
 
   #load in eGRID lookup table for electricity subregions
 
-  eGRIDlookup <- read_excel("OpenEFL.xlsx", sheet = "eGRIDlookup")
+  eGRIDlookup <- read_sheet("1CIyUsINOLlQZnuRGZlPpFMLAuq3RHOoSvs3u6KMUfG0","egrid_lookup")
 
   #load in GWPs and filter to selected assessment report
 
   x <- if(GWP == "SAR"){
     2
-  } else if (GWP == "AR4"){
+  } else if (GWP == "TAR"){
     3
-  } else if (GWP == "AR5"){
+  } else if (GWP == "AR4"){
     4
-  } else if (GWP == "AR6"){
+  } else if (GWP == "AR5"){
     5
   } else {
     NA
   }
-  GWPs <- read_excel("OpenEFL.xlsx", sheet = "GWPs")
+
+  GWPs <- read_sheet("1CIyUsINOLlQZnuRGZlPpFMLAuq3RHOoSvs3u6KMUfG0","GWPs")
   GWPs <- GWPs[c(1,x)]
+  colnames(GWPs)[2] <- "GWP"
+
+  #Create EFL_CO2e table
+
+  EFL_CO2e <- EFL %>%
+    left_join(GWPs, by = "ghg") %>%
+    mutate(co2e_per_unit = ghg_emission_factor * GWP) %>%
+    group_by(source, ef_publishdate, ef_activeyear, service_type, emission_category, emission_scope, country, subregion, service_type_unit) %>%
+    summarise(ef_kg_co2e = sum(co2e_per_unit)) %>%
+    rename(year = ef_activeyear)
+
+  #ghgtools Initiate complete. Now user needs to add their data
+  #------------------------------------------------------------
 
   #load Activity Data and join to Asset Portfolio
 
-  GHGrawdata <- read_excel("ghgtools_ActivityData.xlsx", sheet = "ActivityData") %>%
-    mutate(Year = year(Date)) %>%
-    relocate(Year, .after = Date) %>%
-    left_join(AssetPortfolio, by = "AssetID") %>%
-
-    #filter to USA only
-
-    filter(Country == "United States") %>%
+  GHGrawdata <- read_csv("Activity_Data.csv",show_col_types = FALSE) %>%
+    mutate(year = year(date)) %>%
+    relocate(year, .after = date) %>%
+    left_join(AssetPortfolio, by = "asset_id") %>%
 
     #join egrid_subregions for electricity to Activity Data
 
-    left_join(eGRIDlookup, by = c("ZIP", "ServiceType")) %>%
+    left_join(eGRIDlookup, by = c("zip", "service_type")) %>%
 
-    #map scope type and emissions category Activity Data
+    #create emission_category
 
-    left_join(ScopeType, by = c("AssetType", "ServiceType")) %>%
+    mutate(emission_category = if_else(service_type == "Electricity", "Indirect Energy",
+                                       if_else(asset_type == "Vehicle", "Mobile", "Stationary"))) %>%
 
     #Map emission factors to Activity Data
 
-    left_join(EFL, by = c("Year", "ServiceType", "EmissionCategory", "Country", "Subregion", "UOM")) %>%
-
-    #Load GWPs
-
-    add_column(GWP = colnames(GWPs[,2])) %>%
-    add_column(CO2GWP = GWPs[[1,2]]) %>%
-    add_column(CH4GWP = GWPs[[2,2]]) %>%
-    add_column(N2OGWP = GWPs[[3,2]]) %>%
+    left_join(EFL_CO2e, by = c("year", "service_type", "emission_category", "country", "subregion", "service_type_unit")) %>%
 
     #Calculate GHG emissions for each activity data record
 
-    mutate(kgCO2e.per.UOM = (CO2_kg.per.UOM*CO2GWP) + (CH4_kg.per.UOM*CH4GWP) + (N2O_kg.per.UOM*N2OGWP) + (AUXCO2e_kg.per.UOM)) %>%
-    mutate(kgCO2e = Usage*kgCO2e.per.UOM) %>%
-    mutate(MetricTonsCO2e = kgCO2e/1000)
+    mutate(kg_co2e = usage * ef_kg_co2e) %>%
+    mutate(MT_co2e = kg_co2e/1000)
 
   #Generate error report
 
   GHG_ErrorReport <- GHGrawdata %>%
-    filter(is.na(MetricTonsCO2e)) %>%
+    filter(is.na(MT_co2e)) %>%
+    mutate(across(everything(), as.character)) %>%
+    replace(is.na(.), "") %>%
     write_excel_csv("GHG_ErrorReport.csv")
 
   #Generate GHG Raw Data
 
   GHG_FullRawData <- GHGrawdata %>%
-    filter(!is.na(MetricTonsCO2e)) %>%
+    filter(!is.na(MT_co2e)) %>%
+    mutate(across(everything(), as.character)) %>%
+    replace(is.na(.), "") %>%
     write_excel_csv("GHG_RawData.csv")
+
 }

@@ -1,0 +1,4 @@
+﻿"asset_id","address","city","state","zip","country","sqft","region","business_unit","asset_type","asset_subtype","year_built"
+1,NA,"Seattle","WA",98125,"United States",2000,"PNW","Coffee Sales","Building","Food service",2017
+2,NA,"Gunnison","CO",81230,"United States",650,"Rockies","Snow Sports","Building","Lodging",2015
+3,NA,"Flagstaff","AZ",86004,"United States",1600,"SW","R&D","Building","Office",2022
