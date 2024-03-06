@@ -1,4 +1,0 @@
-﻿"asset_id","vendor","account_id","meter_number","date","cost","service_type","service_type_unit","usage"
-1,"Utility A",1234,9876,"2024/02/01 00:00:00",100,"Electricity","kWh",57694
-2,"Utility B",5678,543,"2024/02/01 00:00:00",200,"Natural Gas","therms",1062
-3,"Utility C",910,210,"2024/02/01 00:00:00",80,"Motor Gasoline","gallons",37

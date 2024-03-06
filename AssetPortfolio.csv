@@ -1,0 +1,12 @@
+asset_id,address,city,state,zip,country,sqft,region,business_unit,asset_type,asset_subtype,year_built
+B1456,,Bellingham,Washington,98226,United States,342,West Coast,Operations,Building,Office,1993
+B1457,,Bellingham,Washington,98225,United States,3280,West Coast,Operations,Building,Office,2005
+B1458,,Bellingham,Washington,98225,United States,20142,West Coast,Operations,Building,Office,2003
+B1564,,Woodinville,Washington,98072,United States,3636,West Coast,Operations,Building,Office,1990
+B1662,,Portland,Oregon,97202,United States,4821,West Coast,Operations,Building,Office,2007
+B1663,,Portland,Oregon,97229,United States,4316,West Coast,Operations,Building,Office,2015
+B1866,,Sacramento,California,95816,United States,6074,West Coast,Operations,Building,Office,1999
+B1867,,Sacramento,California,95825,United States,3959,West Coast,Operations,Building,Office,2004
+B1868,,Sacramento,California,95825,United States,8070,West Coast,Operations,Building,Office,2004
+B2074,,Indio,California,92203,United States,3543,West Coast,Operations,Building,Office,2010
+Enterprise,,,,,United States,,West Coast,,Enterprise,,
