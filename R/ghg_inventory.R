@@ -1,33 +1,49 @@
+#' initiate
+#'
+#' Need to fill
+#' @param GWP Select your desired global warming potentials (GWPs). Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"
+#' @return Need to fill
+#' @export
+initiate <- function(GWP){
+  load("data/ActivityData.rda")
+  load("data/AssetPortfolio.rda")
+  load("data/EFL.rda")
+  load("data/GWPs.rda")
+  gwp_key <- c("ghg",GWP)
+  GWPs <- GWPs[, gwp_key, with = FALSE]
+  colnames(GWPs)[2] <- "gwp"
+  EFL_CO2e <- merge.data.table(EFL, GWPs, sort = FALSE, all.x = TRUE)
+  EFL_CO2e[, gwp_ar := "AR5"]
+  EFL_CO2e[, kgco2e_perunit := ghg_perunit*gwp]
+  EFL_CO2e[, ef_publishdate := format(ef_publishdate, "%m/%d/%Y")]
+  setcolorder(EFL_CO2e, c("ef_source", "ef_publishdate", "ef_activeyear", "service_type", "unit", "emission_category", "service_subcategory1", "service_subcategory2", "emission_scope", "country", "subregion", "source_emission_factor", "ghg_unit", "ghg", "unit_conversion", "conversion_factor", "ghg_perunit", "gwp_ar", "gwp", "kgco2e_perunit"))
+  fwrite(EFL_CO2e, "EFL.csv")
+  fwrite(ActivityData, "ActivityData.csv")
+  fwrite(AssetPortfolio, "AssetPortfolio.csv")
+
+}
+
+
 #' ghg_inventory
 #'
-#' ghg_inventory requires correctly formatted **Activity Data, Asset Portfolio, and Emission Factor Library** to exist in your r project directory. Please visit [ghgtools.io](https://www.ghgtools.io/tools/) for detailed instructions and resources.
+#' ghg_inventory requires correctly formatted **Activity Data, Asset Portfolio, and Emission Factor Library** to exist in your r project directory.
 #'
 #' @param GWP Select your desired global warming potentials (GWPs). Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"
 #' @return Two data sets are written to a csv file in your repository.
 #' @return The first is an error report for records of activity data that failed to calculate GHG emissions properly. Please review this file carefully and make any necessary changes to your activity data and/or asset portfolio.
 #' @return The second data set contains the GHG emissions for each record of activity data that passed through the function successfully.
 #' @export
-ghg_inventory <- function(GWP){
+ghg_inventory <- function(){
 
-  gwp_key <- c("ghg",GWP)
-  EFL <- fread("EFL.csv")
-  GWPs <- fread("GWPs.csv")
-  GWPs <- GWPs[, gwp_key, with = FALSE]
-  colnames(GWPs)[2] <- "GWP"
-  EFL_CO2e <- data.table(merge.data.table(EFL, GWPs, sort = FALSE, all.x = TRUE))
-  EFL_CO2e[, ':='(sum_co2e=ghg_emission_factor*GWP)]
-  EFL_CO2e <- EFL_CO2e[, .(kgco2e_perunit = sum(sum_co2e)), by = .(ef_source, ef_publishdate, ef_activeyear, service_type, unit, emission_category, service_subcategory1, service_subcategory2, emission_scope, country, subregion)]
-  EFL_CO2e[, ef_publishdate := format(ef_publishdate, "%m/%d/%Y")]
-  EFL_CO2e[EFL_CO2e == ""] <- NA
+  EFL_CO2e <- fread("EFL.csv")
+  EFL_CO2e <- EFL_CO2e[, .(kgco2e_perunit = sum(kgco2e_perunit)), by = .(ef_source, ef_publishdate, ef_activeyear, service_type, unit, emission_category, service_subcategory1, service_subcategory2, emission_scope, country, subregion)]
   setnames(EFL_CO2e, "ef_activeyear", "year")
-
+  EFL_CO2e[EFL_CO2e == ""] <- NA
   AssetPortfolio <- fread("AssetPortfolio.csv")
-
   ActivityData <- fread("ActivityData.csv")
-
-  eGRIDlookup <- fread("eGRID_lookup.csv")
-  Ecat_lookup <- fread("Ecat_lookup.csv")
-  DT1 <- fread("ActivityData.csv")
+  load("data/eGRIDlookup.rda")
+  load("data/Ecat_lookup.rda")
+  DT1 <- ActivityData
   DT1[DT1 == ""] <- NA
   DT2 <- data.table(merge.data.table(DT1, AssetPortfolio, sort = FALSE, all.x = TRUE))
   DT3 <- data.table(merge.data.table(DT2, Ecat_lookup, by = c("asset_type", "service_type"), sort = FALSE))

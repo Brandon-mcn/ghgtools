@@ -1,0 +1,53 @@
+asset_type,service_type,emission_category
+Vehicle,Aviation Gasoline,Mobile
+Vehicle,Biodiesel (100%),Mobile
+Vehicle,Compressed Natural Gas (CNG),Mobile
+Vehicle,Diesel Fuel,Mobile
+Vehicle,Ethanol (100%),Mobile
+Vehicle,Kerosene-Type Jet Fuel,Mobile
+Vehicle,Liquefied Natural Gas (LNG),Mobile
+Vehicle,Liquefied Petroleum Gases (LPG),Mobile
+Vehicle,Motor Gasoline,Mobile
+Vehicle,Residual Fuel Oil,Mobile
+Building,Asphalt and Road Oil,Stationary
+Building,Aviation Gasoline,Stationary
+Building,Butane,Stationary
+Building,Butylene,Stationary
+Building,Crude Oil,Stationary
+Building,Distillate Fuel Oil No. 1,Stationary
+Building,Distillate Fuel Oil No. 2,Stationary
+Building,Distillate Fuel Oil No. 4,Stationary
+Building,Ethane,Stationary
+Building,Ethylene,Stationary
+Building,Heavy Gas Oils,Stationary
+Building,Isobutane,Stationary
+Building,Isobutylene,Stationary
+Building,Kerosene,Stationary
+Building,Kerosene-Type Jet Fuel,Stationary
+Building,Liquefied Petroleum Gases (LPG),Stationary
+Building,Lubricants,Stationary
+Building,Motor Gasoline,Stationary
+Building,Naphtha (<401 deg F),Stationary
+Building,Natural Gas,Stationary
+Building,Natural Gasoline,Stationary
+Building,Other Oil (>401 deg F),Stationary
+Building,Pentanes Plus,Stationary
+Building,Petrochemical Feedstocks,Stationary
+Building,Propane,Stationary
+Building,Propylene,Stationary
+Building,Residual Fuel Oil No. 5,Stationary
+Building,Residual Fuel Oil No. 6,Stationary
+Building,Special Naphtha,Stationary
+Building,Unfinished Oils,Stationary
+Building,Used Oil,Stationary
+Building,Steam,Indirect Energy
+Building,Chilled Water,Indirect Energy
+Building,Electricity,Indirect Energy
+Building,Purchased Goods and Services,Purchased Goods and Services
+Building,Capital Goods,Capital Goods
+Enterprise,Purchased Goods and Services,Purchased Goods and Services
+Enterprise,Capital Goods,Capital Goods
+Building,Business Travel,Business Travel
+Building,Employee Commuting,Employee Commuting
+Enterprise,Business Travel,Business Travel
+Enterprise,Employee Commuting,Employee Commuting

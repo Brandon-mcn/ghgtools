@@ -4,7 +4,7 @@
 \alias{ghg_inventory}
 \title{ghg_inventory}
 \usage{
-ghg_inventory(GWP)
+ghg_inventory()
 }
 \arguments{
 \item{GWP}{Select your desired global warming potentials (GWPs). Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"}
@@ -17,5 +17,5 @@ The first is an error report for records of activity data that failed to calcula
 The second data set contains the GHG emissions for each record of activity data that passed through the function successfully.
 }
 \description{
-ghg_inventory requires correctly formatted \strong{Activity Data, Asset Portfolio, and Emission Factor Library} to exist in your r project directory. Please visit \href{https://www.ghgtools.io/tools/}{ghgtools.io} for detailed instructions and resources.
+ghg_inventory requires correctly formatted \strong{Activity Data, Asset Portfolio, and Emission Factor Library} to exist in your r project directory.
 }
