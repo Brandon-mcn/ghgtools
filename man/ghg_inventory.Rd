@@ -6,9 +6,6 @@
 \usage{
 ghg_inventory()
 }
-\arguments{
-\item{GWP}{Select your desired global warming potentials (GWPs). Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"}
-}
 \value{
 Two data sets are written to a csv file in your repository.
 

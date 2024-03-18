@@ -2,3 +2,4 @@
 
 export(ghg_inventory)
 export(initiate)
+import(data.table)
