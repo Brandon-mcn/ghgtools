@@ -4,6 +4,8 @@
 # ghgtools
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/Brandon-mcn/ghgtools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Brandon-mcn/ghgtools/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **ghgtools** is designed to make greenhouse gas (GHG) accounting more

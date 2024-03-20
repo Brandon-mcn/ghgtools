@@ -41,8 +41,6 @@ Let's look at the raw emission factor library, which is made available once we l
 <br>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(knitr)
-library(magrittr)
 library(kableExtra)
 kbl(head(EFL, 300)) %>%
   kable_material(c("striped", "hover")) %>%
