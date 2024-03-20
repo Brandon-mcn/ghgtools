@@ -10,13 +10,13 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Imports: 
     data.table,
-    kableExtra,
-    ggplot2
 Depends: 
     R (>= 2.10)
 LazyData: true
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    kableExtra,
+    ggplot2
 VignetteBuilder: knitr
 URL: https://brandon-mcn.github.io/ghgtools/
