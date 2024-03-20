@@ -35,13 +35,14 @@ First, we need to load ghgtools
 
 ```{r setup}
 library(ghgtools)
+library(kableExtra)
+library(ggplot2)
 ```
 
 Let's look at the raw emission factor library, which is made available once we load ghgtools with `library(ghgtools)`
 <br>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(kableExtra)
 kbl(head(EFL, 300)) %>%
   kable_material(c("striped", "hover")) %>%
   scroll_box(width = "100%", height = "400px")
@@ -84,7 +85,6 @@ kbl(head(AR5_ghginventory, 100)) %>%
 <br>
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE, fig.width=6, fig.height=4}
-library(ggplot2)
 ghg_summary <- AR5_ghginventory[, .(EmissionTotal = sum(mt_co2e)), by = emission_scope]
 ghg_summary[, percentage := (EmissionTotal / sum(EmissionTotal))*100]
 GHG_sum_chart <- ggplot(ghg_summary, aes(x = emission_scope, y = EmissionTotal)) +
