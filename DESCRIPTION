@@ -17,3 +17,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://brandon-mcn.github.io/ghgtools/
