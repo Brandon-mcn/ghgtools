@@ -44,7 +44,7 @@ Let's look at the raw emission factor library, which is made available once we l
 library(kableExtra)
 kbl(head(EFL, 300)) %>%
   kable_material(c("striped", "hover")) %>%
-  scroll_box(width = "700px", height = "400px")
+  scroll_box(width = "100%", height = "400px")
 ```
 
 <br>
@@ -60,7 +60,7 @@ Let's take a look at the new emission factor library
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 kbl(head(AR5_EFL, 100)) %>%
   kable_material(c("striped", "hover")) %>%
-  scroll_box(width = "700px", height = "400px")
+  scroll_box(width = "100%", height = "400px")
 ```
 
 <br>
@@ -76,7 +76,7 @@ Let's take a look at the ghg inventory that was calculated
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 kbl(head(AR5_ghginventory, 100)) %>%
   kable_material(c("striped", "hover")) %>%
-  scroll_box(width = "700px", height = "400px")
+  scroll_box(width = "100%", height = "400px")
 ```
 
 <br>
