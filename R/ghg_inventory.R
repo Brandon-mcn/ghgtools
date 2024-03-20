@@ -12,7 +12,7 @@ ghg_inventory <- function(GWP){
   load(system.file("data", "AssetPortfolio.rda", package = "ghgtools"))
   load(system.file("data", "EFL.rda", package = "ghgtools"))
   load(system.file("data", "GWPs.rda", package = "ghgtools"))
-check
+
   gwp_key <- c("ghg",GWP)
   GWPs <- GWPs[, gwp_key, with = FALSE]
   colnames(GWPs)[2] <- "gwp"
