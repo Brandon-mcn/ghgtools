@@ -1,0 +1,152 @@
+---
+title: "ghgtools-tutorial"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ghgtools-tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ghgtools)
+library(dplyr)
+library(magrittr)
+library(ggplot2)
+library(kableExtra)
+library(scales)
+```
+
+<br>
+**ghgtools** is a project of the Carbon Accounting, Reporting, and Management lab [(CARML)](https://carml.rc.nau.edu/). Tracking, measuring, and reporting GHG emissions is essential to understand risks and identify opportunities related to climate change and the transition towards a renewable energy economy. Our mission is to grow the practice of GHG accounting with tools rooted in uncompromising transparency, rigorous data quality, and purposeful versatility. 
+
+## The Basics
+
+The GHG inventory of any entity can be summarized as follows: _Assets_, such as buildings, vehicles, and equipment, engage in _Activities_, such as electricity consumption, travel, or purchasing, which each have a specific _Emission Factor_ that tells us the rate at which that activity generates GHG emissions. These three variables - assets, actives, and emission factors - compose the underlying calculation methodology. ghgtools uses a set of standardized data templates to match each record of activity data to an emission factor using information about your assets. Our methodology is built on the best practices set forth by the [GHG Protocol Corporate Standard](https://ghgprotocol.org/corporate-standard).
+
+The following datasheets are required to use ghgtools and calculate GHG emissions:
+
+**Asset_Portfolio** - The list of all your assets. This likely includes buildings and vehicles. You may also designate an _Enterprise_ asset to calculate scope 3 emissions for purchasing, business travel, and other supply chain related activities. 
+
+**Activity_Data** - The record of energy consumption and other GHG-producing activities across each of your assets. 
+
+**Emission_Factor_Library** - The catalog of emission factors for a variety of activities. Our team consolidates emission factors from a collection of reputable sources, such as the EPA's [Emission Factor Hub](https://www.epa.gov/climateleadership/ghg-emission-factors-hub). Unless you want to add your own custom emission factors (which you certainly can, these tools are open source after all!), you don't need to worry about the emission factor library. It is pre-populated and ready to go. 
+
+## How it Works
+
+In order to consolidate emissions data across multiple greenhouse gasses, we need to select global warming potentials (GWPs). You can learn more about different values of global warming potentials by follwoing [this link](https://www.epa.gov/ghgemissions/understanding-global-warming-potentials). The general recommendation is to follow the UNFCCC guidelines, which require the use of GWP values from the IPCC's Fifth Assessment Report (AR5).
+
+```{r, include=TRUE, warning=FALSE}
+ghg_inventory("AR5")
+```
+
+<br>
+
+**Emission Factor Library**
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+EFL_CO2e.narm <- EFL_CO2e
+EFL_CO2e.narm[is.na(EFL_CO2e.narm)] <- ""
+kbl(EFL_CO2e.narm) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```
+
+<br>
+
+**Asset Portfolio**
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+AssetPortfolio.narm <- AssetPortfolio
+AssetPortfolio.narm[is.na(AssetPortfolio.narm)] <- ""
+kbl(AssetPortfolio.narm) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```
+
+<br>
+
+**Activity Data**
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+ActivityData.narm <- ActivityData
+ActivityData.narm[is.na(ActivityData.narm)] <- ""
+kbl(ActivityData.narm) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```
+
+The GHG inventory raw data output looks like this:
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+kbl(GHGrawdata) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```
+
+<br>
+With our GHG inventory calculated, we can produce a number of charts and visuals to start exploring the data. 
+
+```{r, echo=FALSE, message = FALSE, warning=FALSE}
+ghg_summary <- GHGrawdata[, .(EmissionTotal = sum(mt_co2e)), by = emission_scope]
+ghg_summary[, percentage := (EmissionTotal / sum(EmissionTotal))*100]
+GHG_sum_chart <- ggplot(ghg_summary, aes(x = emission_scope, y = EmissionTotal)) +
+  geom_bar(stat = "identity", width = 0.8, fill = "grey", color = "black") +
+  geom_text(aes(label = paste0(round(percentage), "%")),
+            position = position_stack(vjust = 0.5),
+            size = 4,
+            fontface = "bold",
+            color = "black") +
+  labs(title = "GHG Emissions Total",
+       x = "",
+       y = "MT CO2e")
+print(GHG_sum_chart)
+```
+
+<br>
+
+```{r, echo=FALSE, message = FALSE, warning=FALSE}
+Ecat_summary <- GHGrawdata[, .(EmissionTotal = sum(mt_co2e)), by = service_type]
+Ecat_sum_chart <- ggplot(Ecat_summary, aes(x = reorder(service_type, EmissionTotal), y = EmissionTotal)) +
+  geom_bar(stat = "identity", width = 0.7, fill = "darkgreen", color = "black") +
+  labs(title = "GHG Emissions by Activity Type",
+       x = "",
+       y = "MT CO2e") +
+  coord_flip()
+print(Ecat_sum_chart)
+```
+
+<br>
+
+```{r, echo=FALSE, message = FALSE, warning=FALSE}
+scope1and2 <- c("Scope 1", "Scope 2")
+state_data <- GHGrawdata[emission_scope %in% scope1and2, .(EmissionTotal = sum(mt_co2e)), by = state]
+state_data[, EmissionTotal := round(EmissionTotal, 0)]
+state_data[, mid := EmissionTotal - (0.5 * EmissionTotal)]
+state_data_chart <- ggplot(state_data, aes(x = state, y = EmissionTotal)) +
+  geom_bar(stat = "identity", width = 0.5, fill = "lightgrey", color = "black") +
+   geom_text(aes(x = state, y = mid, label = paste0(EmissionTotal, " MT CO2e")), 
+            size = 4,
+            fontface = "bold", 
+            color = "black") +
+  labs(title = "Scope 1 & 2 Emissions by State",
+       x = "",
+       y = "") +
+  coord_flip()
+print(state_data_chart)
+```
+
+<br>
+These charts are just the tip of the iceberg. Using [ggplot2](https://r-graph-gallery.com/ggplot2-package.html) we can create a wide variety of charts and data visualizations, with almost infinite customization. 
+
+**If you want to start using ghgtools** - follow this link to the [ghgtools-template](https://github.com/Brandon-mcn/ghgtools-template) repository on github. You can clone this repository, which has all the data templates, emission factor library, and brief instructions on how to get started.
+
+<br>
+
