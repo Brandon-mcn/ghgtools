@@ -92,12 +92,12 @@ check_load_data <- function(){
 #' @export
 ghg_inventory <- function(){
 
-  DT1 <- Activity_Data
-  DT2 <- data.table(merge.data.table(DT1, Asset_Portfolio, sort = FALSE, all.x = TRUE))
-  DT3 <- data.table(merge.data.table(DT2, Ecat_lookup, by = c("asset_type", "service_type"), sort = FALSE))
-  DT4 <- data.table(merge.data.table(DT3, eGRIDlookup, sort = FALSE, all.x = TRUE))
-  DT4[is.na(DT4)] <- ""
-  GHGrawdata <- data.table(merge.data.table(DT4, EF_Library, by = c("year",
+  AD1 <- Activity_Data
+  AD1 <- data.table(merge.data.table(AD1, Asset_Portfolio, sort = FALSE, all.x = TRUE))
+  AD1 <- data.table(merge.data.table(AD1, Ecat_lookup, by = c("asset_type", "service_type"), sort = FALSE))
+  AD1 <- data.table(merge.data.table(AD1, eGRIDlookup, sort = FALSE, all.x = TRUE))
+  AD1[is.na(AD1)] <- ""
+  GHGrawdata <- data.table(merge.data.table(AD1, EF_Library, by = c("year",
                                                                   "service_type",
                                                                   "emission_category",
                                                                   "service_subcategory1",
