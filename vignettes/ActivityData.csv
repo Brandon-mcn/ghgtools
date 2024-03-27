@@ -1,0 +1,36 @@
+asset_id,vendor,account_id,meter_number,date,year,cost,service_type,service_subcategory1,service_subcategory2,unit,usage
+B1456,,,,,2023,,Electricity,"","",kWh,31231.907
+B1457,,,,,2023,,Electricity,"","",kWh,19389.588
+B1458,,,,,2023,,Electricity,"","",kWh,185862.407
+B1458,,,,,2023,,Natural Gas,"","",therms,2569.69
+B1564,,,,,2023,,Electricity,"","",kWh,47302.603
+B1564,,,,,2023,,Natural Gas,"","",therms,1382.843
+B1662,,,,,2023,,Electricity,"","",kWh,106760.001
+B1662,,,,,2023,,Natural Gas,"","",therms,3541.052
+B1663,,,,,2023,,Electricity,"","",kWh,74746.451
+B1663,,,,,2023,,Natural Gas,"","",therms,1793.131
+B1866,,,,,2023,,Electricity,"","",kWh,85928.162
+B1867,,,,,2023,,Electricity,"","",kWh,44956.454
+B1868,,,,,2023,,Electricity,"","",kWh,106728.394
+B2074,,,,,2023,,Electricity,"","",kWh,49348
+B2074,,,,,2023,,Natural Gas,"","",therms,25.981
+Enterprise,,,,,2023,,Capital Goods,Manufacturing,Electronic Computer Manufacturing,USD,22219.24
+Enterprise,,,,,2023,,Capital Goods,Manufacturing,All Other Miscellaneous General Purpose Machinery Manufacturing,USD,424731.11
+Enterprise,,,,,2023,,Purchased Goods and Services,"Professional, Scientific, and Technical Services",All Other Legal Services,USD,533840.64
+Enterprise,,,,,2023,,Purchased Goods and Services,"Professional, Scientific, and Technical Services",Human Resources Consulting Services,USD,130615.22
+Enterprise,,,,,2023,,Purchased Goods and Services,"Professional, Scientific, and Technical Services",Landscape Architectural Services,USD,988346.4
+Enterprise,,,,,2023,,Purchased Goods and Services,Administrative and Support and Waste Mgmt. Services,Facilities Support Services,USD,154157.66
+Enterprise,,,,,2023,,Purchased Goods and Services,Administrative and Support and Waste Mgmt. Services,Janitorial Services,USD,42621.18
+Enterprise,,,,,2023,,Purchased Goods and Services,Administrative and Support and Waste Mgmt. Services,Office Administrative Services,USD,160131.34
+Enterprise,,,,,2023,,Purchased Goods and Services,Administrative and Support and Waste Mgmt. Services,Security Systems Services (except Locksmiths),USD,15929.275
+Enterprise,,,,,2023,,Purchased Goods and Services,Educational Services,Professional and Management Development Training,USD,321181.5
+Enterprise,,,,,2023,,Purchased Goods and Services,Information,Wireless Telecommunications Carriers (except Satellite),USD,1795761.13
+Enterprise,,,,,2023,,Business Travel,Ground Travel,Passenger Car,vehicle-mile,15000
+Enterprise,,,,,2023,,Business Travel,Ground Travel,Light-Duty Truck,vehicle-mile,500
+Enterprise,,,,,2023,,Business Travel,Rail Travel,Intercity Rail - National Average,passenger-mile,37000
+Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Short Haul,passenger-mile,60000
+Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Medium Haul,passenger-mile,110000
+Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Long Haul,passenger-mile,73000
+Enterprise,,,,,2023,,Employee Commuting,Ground Travel,Passenger Car,vehicle-mile,70000
+Enterprise,,,,,2023,,Employee Commuting,Rail Travel,Transit Rail,passenger-mile,84000
+Enterprise,,,,,2023,,Employee Commuting,Ground Travel,Bus,passenger-mile,3000

@@ -23,58 +23,82 @@ The GHG inventory of any entity can be summarized as follows: _Assets_, such as 
 
 The following data sets are required to use ghgtools and calculate GHG emissions. When you library(ghgtools), these data sets are made available.
 
+**Emission_Factor_Library** - The catalog of emission factors for a variety of activities. Our team consolidates emission factors from a collection of reputable sources, such as the EPA's [Emission Factor Hub](https://www.epa.gov/climateleadership/ghg-emission-factors-hub). Unless you want to add your own custom emission factors (which you certainly can, these tools are open source after all!), you don't need to worry about the emission factor library. It is pre-populated and ready to go. 
+
 **Asset_Portfolio** - The list of all your assets. This likely includes buildings and vehicles. You may also designate an _Enterprise_ asset to calculate scope 3 emissions for purchasing, business travel, and other supply chain related activities. 
 
 **Activity_Data** - The record of energy consumption and other GHG-producing activities across each of your assets. 
 
-**Emission_Factor_Library** - The catalog of emission factors for a variety of activities. Our team consolidates emission factors from a collection of reputable sources, such as the EPA's [Emission Factor Hub](https://www.epa.gov/climateleadership/ghg-emission-factors-hub). Unless you want to add your own custom emission factors (which you certainly can, these tools are open source after all!), you don't need to worry about the emission factor library. It is pre-populated and ready to go. 
-
 ## How it Works
 
 First, we need to load ghgtools
+<br>
 
 ```{r setup}
 library(ghgtools)
 ```
 
-Let's look at the raw emission factor library, which is made available once we load ghgtools with `library(ghgtools)`
+<br>
+The emission factor library, abbreviated as EFL, is loaded from the ghgtools package. The raw form of the EFL has a row of data for each greenhouse gas produced by the activity. For example, burning natural gas will generate CO2, CH4 and N2O. We use the function `create_efl()` to assign global warming potentials to each greenhouse gas and produce an emission factor in units of carbon dioxide equivalents (CO2e). The only argument for `create_efl()` is the selection of GWPs (choices are "SAR", "AR4", "AR5", or "AR6"). If you have no preference for GWPs, we recommend following UNFCCC guidelines, which require the use of GWP values from the IPCC's Fifth Assessment Report (AR5).
+<br> 
+You will need a working directory set to use ghgtools. If you do not already have a working directory set, use `setwd()`.
+<br>
+
+```{r, include=TRUE, message=FALSE, warning=FALSE}
+create_efl("AR5")
+```
+
+<br>
+Now we need to create our data input templates in the working directory. Use `create_templates()`
+<br>
+
+```{r, include=TRUE, message=FALSE, warning=FALSE}
+create_templates()
+```
+
+<br>
+The next steps are provided in the return message from `create_templates()`. It's time to load you data into **AssetPortfolio.csv** and **ActivityData.csv**. If you'd just like to experiment with the functionality of ghgtools, you can leave the templates as is. There is some dummy data pre-populated in the templates. Once your data is loaded, run `check_load_data()` to load data from the input templates into global environment variables.
+<br>
+
+```{r, include=TRUE, message=FALSE, warning=FALSE}
+check_load_data()
+```
+
+<br>
+Great! The data loaded successfully. Let's take a look at the emission factor library
 <br>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(kableExtra)
-kbl(head(EFL, 300)) %>%
+kbl(head(EF_Library, 100)) %>%
   kable_material(c("striped", "hover")) %>%
   scroll_box(width = "100%", height = "400px")
 ```
 
 <br>
-The emission factor library, abbreviated as EFL, is loaded from the ghgtools package. The raw form of the EFL has a row of data for each greenhouse gas produced by the activity. For example, burning natural gas will generate CO2, CH4 and N2O. We use the function `create_efl()` to assign global warming potentials to each greenhouse gas and produce an emission factor in units of carbon dioxide equivalents (CO2e). The only argument for `create_efl()` is the selection of GWPs (choices are "SAR", "AR4", "AR5", or "AR6"). If you have no preference for GWPs, we recommend following UNFCCC guidelines, which require the use of GWP values from the IPCC's Fifth Assessment Report (AR5).
-
-```{r, include=TRUE, message=FALSE, warning=FALSE}
-AR5_EFL <- create_efl("AR5")
-```
-
-Let's take a look at the new emission factor library
+And our Activity Data
 <br>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-kbl(head(AR5_EFL, 100)) %>%
+Activity_Data[is.na(Activity_Data)] <- ""
+kbl(head(Activity_Data, 100)) %>%
   kable_material(c("striped", "hover")) %>%
   scroll_box(width = "100%", height = "400px")
 ```
 
 <br>
-`create_efl()` let's us produce an emission factor library for reference. To calculate a GHG inventory, we use the function `ghg_inventory()`. Like `create_efl()`, this function aslo requires the selection of GWPs. 
+Now that the input data is properly loaded into r, you are ready to run `ghg_inventory()`.
+<br>
 
 ```{r, include=TRUE, message=FALSE, warning=FALSE}
-AR5_ghginventory <- ghg_inventory("AR5")
+ghg_inventory()
 ```
-
+<br>
 Let's take a look at the ghg inventory that was calculated
 <br>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-kbl(head(AR5_ghginventory, 100)) %>%
+kbl(head(GHG_rawdata, 100)) %>%
   kable_material(c("striped", "hover")) %>%
   scroll_box(width = "100%", height = "400px")
 ```
@@ -85,7 +109,7 @@ kbl(head(AR5_ghginventory, 100)) %>%
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE, fig.width=6, fig.height=4}
 library(ggplot2)
-ghg_summary <- AR5_ghginventory[, .(EmissionTotal = sum(mt_co2e)), by = emission_scope]
+ghg_summary <- GHG_rawdata[, .(EmissionTotal = sum(mt_co2e)), by = emission_scope]
 ghg_summary[, percentage := (EmissionTotal / sum(EmissionTotal))*100]
 GHG_sum_chart <- ggplot(ghg_summary, aes(x = emission_scope, y = EmissionTotal)) +
   geom_bar(stat = "identity", width = 0.8, fill = "grey", color = "black") +
@@ -103,7 +127,7 @@ print(GHG_sum_chart)
 <br>
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE, fig.width=6, fig.height=4}
-Ecat_summary <- AR5_ghginventory[, .(EmissionTotal = sum(mt_co2e)), by = service_type]
+Ecat_summary <- GHG_rawdata[, .(EmissionTotal = sum(mt_co2e)), by = service_type]
 Ecat_sum_chart <- ggplot(Ecat_summary, aes(x = reorder(service_type, EmissionTotal), y = EmissionTotal)) +
   geom_bar(stat = "identity", width = 0.7, fill = "darkgreen", color = "black") +
   labs(title = "GHG Emissions by Activity Type",
@@ -117,7 +141,7 @@ print(Ecat_sum_chart)
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE,fig.width=6, fig.height=4}
 scope1and2 <- c("Scope 1", "Scope 2")
-state_data <- AR5_ghginventory[emission_scope %in% scope1and2, .(EmissionTotal = sum(mt_co2e)), by = state]
+state_data <- GHG_rawdata[emission_scope %in% scope1and2, .(EmissionTotal = sum(mt_co2e)), by = state]
 state_data[, EmissionTotal := round(EmissionTotal, 0)]
 state_data[, mid := EmissionTotal - (0.5 * EmissionTotal)]
 state_data_chart <- ggplot(state_data, aes(x = state, y = EmissionTotal)) +
