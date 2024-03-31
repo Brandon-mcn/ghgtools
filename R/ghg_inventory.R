@@ -63,7 +63,7 @@ create_templates <- function(){
 
 #' check_load_data
 #'
-#' This function checks your input data and loads it into the global environment
+#' This function checks your input data and loads it into the global environment.
 #'
 #' @return The required dataframes for ghgtools
 #' @import data.table
