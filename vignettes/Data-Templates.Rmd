@@ -1,0 +1,188 @@
+---
+title: "Data-Templates"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Data-Templates}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+library(ghgtools)
+library(kableExtra)
+```
+
+Data templates for ghgtools R package are available for download here. Each template has some example data. Please ensure to delete the example data before entering your own data. 
+
+[Activity Data Template](/data-raw/ActivityData.csv)
+
+The _Activity Data_ template will contain each record of activity data for your GHG inventory. Download it from the above link and do not change the file name. It looks like this
+
+```{r, echo=FALSE}
+AD1 <- ActivityData
+AD1[is.na(AD1)] <- ""
+kbl(AD1) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```
+
+
+Data validation rules for each column are explained below
+
+**AssetID**
+- Required input
+- Must be alpha-numeric
+- Must match an AssetID from your _Asset Portfolio_ (see below for more details)
+
+**Vendor**
+- Optional input (can be left blank)
+- Name of the utility vendor or supplier
+
+**AccountNumber**
+- Optional input (can be left blank)
+- Account number for utility service
+
+**MeterNumber**
+- Optional input (can be left blank)
+- Meter number for utility service
+
+**Date**
+- Required input
+- Must be in date format
+- For monthly billing, enter either the start date or end data of the billing cycle (you can choose either, but be consistent)
+
+**Cost**
+- Optional input (can be left blank)
+- Must be numeric
+
+**ServiceType**
+- Required input
+- Must be one of the following (entered exactly as shown)
+
+```{r, echo=FALSE}
+ScopeType <- Ecat_lookup
+ServiceType <- na.omit(ScopeType[,2])
+ServiceType <- unlist(ServiceType)
+ServiceType <- unique(ServiceType)
+ServiceType <- sort(ServiceType)
+ServiceType <- data.frame(ServiceType = unlist(ServiceType))
+kbl(ServiceType) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "50%", height = "300px")
+```
+
+**UOM**
+- Required input
+- Unit Of Measure for the activity data 
+- e.g. kWh for electric, Gallons for gasoline
+
+
+**Usage**
+- Required input
+- Total quantity of usage for the record of activity data
+- units = UOM
+
+***
+
+[Asset Portfolio Template](/data-raw/AssetPortfolio.csv)
+
+The _Asset Portfolio_ template is a record of every single asset in your portfolio that consumes energy and/or emits GHG emissions. In most cases, these assets will be buildings, vehicles, or other kinds of equipment. Each record of data should be mutually exclusive. E.g., if you are accounting for energy from a boiler as it's own asset, do not include that energy consumption in the building asset. Download the template from the above link and do not change the file name. It looks like this
+
+```{r, echo=FALSE}
+AP1 <- AssetPortfolio
+AP1[is.na(AP1)] <- ""
+kbl(AP1) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```
+
+
+Data validation rules for each column are explained below
+
+**AssetID**
+- Required input
+- Must be alpha-numeric
+- Must be unique from any other AssetID
+
+**Address, City, State**
+- Optional input (can be left blank)
+- Mapping functions will not work as intended if left blank 
+
+**ZIP**
+- Required input
+- Must be 5-digit numeric zip code
+
+**Country**
+- Required input
+- Currently support only offered for USA & Canada
+
+**SQFT**
+- Optional input (can be left blank)
+- Must be numeric
+- If left blank, certain metrics will not calculate for building asset types
+
+**Region**
+- Optional input (can be left blank)
+- Can be any value
+
+**BuisnessUnit**
+- Optional input (can be left blank)
+- Can be any value
+
+**AssetType**
+- Required Input
+- Choose from the following: **Building, Vehicle, Equipment**
+
+**AssetSubType**
+- Optional input (can be left blank)
+- If left blank, certain metrics will not calculate
+- If AssetType = Building, chose from the following options
+
+```{r, echo=FALSE}
+building_list <- list("Education", "Food sales", "Food service", "Health care",
+                "Inpatient Health care", "Outpatient Health care", "Lodging",
+                "Mercantile", "Retail (other than mall) Mercantile",
+                "Enclosed and strip malls Mercantile", "Office", "Public assembly",
+                "Public order and safety", "Religious worship", "Service",
+                "Warehouse and storage", "Other", "Vacant")
+buildingsubtype <- data.frame(Building_Type = unlist(building_list))
+kbl(buildingsubtype) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "50%", height = "300px")
+```
+
+- If AssetType = Vehicle, chose from the following options
+
+
+```{r, echo=FALSE}
+vehicle_list <- list("Medium- and Heavy-Duty Truck", "Passenger Car", "Light-Duty Truck",
+                "Waterborne Craft", "Aircraft")
+vehiclesubtype <- data.frame(Vehicle_Type = unlist(vehicle_list))
+kbl(vehiclesubtype) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "50%", height = "300px")
+```
+
+- If AssetType = Equipment, chose from the following options
+
+
+```{r, echo=FALSE}
+eqp_list <- list("Landscaping Tools", "Lawn Mower", "Boiler", "Generator", "Other")
+eqpsubtype <- data.frame(Equipment_Type = unlist(eqp_list))
+kbl(eqpsubtype) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "50%", height = "300px")
+```
+
+
+**YearBuilt**
+- Optional input (can be left blank)
+- Must be a 4 digit numeric year

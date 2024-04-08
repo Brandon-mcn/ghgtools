@@ -10,5 +10,5 @@ check_load_data()
 The required dataframes for ghgtools
 }
 \description{
-This function checks your input data and loads it into the global environment
+This function checks your input data and loads it into the global environment.
 }
