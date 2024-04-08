@@ -2,8 +2,9 @@ pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
+  Data-Templates: Data-Templates.html
   ghgtools: ghgtools.html
-last_built: 2024-03-31T16:36Z
+last_built: 2024-04-08T16:22Z
 urls:
   reference: https://brandon-mcn.github.io/ghgtools/reference
   article: https://brandon-mcn.github.io/ghgtools/articles
