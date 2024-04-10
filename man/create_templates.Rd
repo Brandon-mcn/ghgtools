@@ -7,7 +7,7 @@
 create_templates()
 }
 \value{
-The activity data and asset portfolio templates
+The activity data, asset portfolio templates, and the full emission factor library
 }
 \description{
 This function creates the activity data and asset portfolio templates as CSV files in your project directory.

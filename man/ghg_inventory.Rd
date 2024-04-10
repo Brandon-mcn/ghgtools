@@ -4,11 +4,27 @@
 \alias{ghg_inventory}
 \title{ghg_inventory}
 \usage{
-ghg_inventory()
+ghg_inventory(AD, AP, GWP, EFL = EFLibrary)
+}
+\arguments{
+\item{AD}{Activity Data organized according to the template.}
+
+\item{AP}{Asset Portfolio organized according the template.}
+
+\item{GWP}{Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6".}
+
+\item{EFL}{Emissions Factor Library organized according to the template. Defaults to \code{EFLibrary}}
 }
 \value{
 The GHG raw data
 }
 \description{
 Calculates a GHG inventory using input data from EF_Library, Asset_Portfolio, and Activity_Data variables in the global environment.
+}
+\examples{
+ghg_inventory(ActivityData, AssetPortfolio, "AR5")
+
+}
+\seealso{
+\href{https://www.epa.gov/ghgemissions/understanding-global-warming-potentials}{Gudiance from EPA about GWPs}
 }

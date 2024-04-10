@@ -39,13 +39,26 @@ library(ghgtools)
 ```
 
 <br>
-The emission factor library, abbreviated as EFL, is loaded from the ghgtools package. The raw form of the EFL has a row of data for each greenhouse gas produced by the activity. For example, burning natural gas will generate CO2, CH4 and N2O. We use the function `create_efl()` to assign global warming potentials to each greenhouse gas and produce an emission factor in units of carbon dioxide equivalents (CO2e). The only argument for `create_efl()` is the selection of GWPs (choices are "SAR", "AR4", "AR5", or "AR6"). If you have no preference for GWPs, we recommend following UNFCCC guidelines, which require the use of GWP values from the IPCC's Fifth Assessment Report (AR5).
-<br> 
-You will need a working directory set to use ghgtools. If you do not already have a working directory set, use `setwd()`.
+The emission factor library, `EFLibrary`, is loaded from the ghgtools package. There is a row of data for each greenhouse gas produced by the activity. For example, burning natural gas will generate CO2, CH4 and N2O. `EFLibrary` is loaded when you library ghgtools.
 <br>
 
 ```{r, include=TRUE, message=FALSE, warning=FALSE}
-create_efl("AR5")
+library(kableExtra)
+EFLibrary[is.na(EFLibrary)] <- ""
+kbl(head(EFLibrary, 100)) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```
+<br>
+If you want to export the EFLibrary and consolidate each emission factor into carbon dioxide equivalents (CO2e), you can use `export_efl`. When using `export_efl`, input your selection of GWPs (choices are "SAR", "AR4", "AR5", or "AR6"). If you have no preference for GWPs, we recommend following UNFCCC guidelines, which require the use of GWP values from the IPCC's Fifth Assessment Report (AR5).
+<br>
+
+```{r, include=TRUE, message=FALSE, warning=FALSE}
+AR5_EFL <- export_efl("AR5")
+AR5_EFL[is.na(AR5_EFL)] <- ""
+kbl(head(AR5_EFL, 100)) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
 ```
 
 <br>
@@ -61,22 +74,11 @@ The next steps are provided in the return message from `create_templates()`. It'
 <br>
 
 ```{r, include=TRUE, message=FALSE, warning=FALSE}
-check_load_data()
+load_data()
 ```
 
 <br>
 Great! The data loaded successfully. Let's take a look at the emission factor library
-<br>
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(kableExtra)
-kbl(head(EF_Library, 100)) %>%
-  kable_material(c("striped", "hover")) %>%
-  scroll_box(width = "100%", height = "400px")
-```
-
-<br>
-And our Activity Data
 <br>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -87,11 +89,22 @@ kbl(head(Activity_Data, 100)) %>%
 ```
 
 <br>
-Now that the input data is properly loaded into r, you are ready to run `ghg_inventory()`.
+And our Asset Portfolio
+<br>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+Asset_Portfolio[is.na(Asset_Portfolio)] <- ""
+kbl(head(Asset_Portfolio, 100)) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```
+
+<br>
+The core function of ghgtools is `ghg_inventory()`. This function requires activity data, an asset portoflio, and a GWP selection. `ghg_inventory()` will default to the internal emission factor library `EFLibrary` if no selection is made. You may create your own EFL and use it in `ghg_inventory()` if you like. 
 <br>
 
 ```{r, include=TRUE, message=FALSE, warning=FALSE}
-ghg_inventory()
+GHG_rawdata <- ghg_inventory(Activity_Data, Asset_Portfolio, "AR5")
 ```
 <br>
 Let's take a look at the ghg inventory that was calculated
