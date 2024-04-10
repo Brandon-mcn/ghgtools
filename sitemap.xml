@@ -31,7 +31,7 @@
     <loc>https://brandon-mcn.github.io/ghgtools/reference/AssetPortfolio.html</loc>
   </url>
   <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/EFL.html</loc>
+    <loc>https://brandon-mcn.github.io/ghgtools/reference/EFLibrary.html</loc>
   </url>
   <url>
     <loc>https://brandon-mcn.github.io/ghgtools/reference/Ecat_lookup.html</loc>
@@ -40,21 +40,21 @@
     <loc>https://brandon-mcn.github.io/ghgtools/reference/GWPs.html</loc>
   </url>
   <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/check_load_data.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/create_efl.html</loc>
-  </url>
-  <url>
     <loc>https://brandon-mcn.github.io/ghgtools/reference/create_templates.html</loc>
   </url>
   <url>
     <loc>https://brandon-mcn.github.io/ghgtools/reference/eGRIDlookup.html</loc>
   </url>
   <url>
+    <loc>https://brandon-mcn.github.io/ghgtools/reference/export_efl.html</loc>
+  </url>
+  <url>
     <loc>https://brandon-mcn.github.io/ghgtools/reference/ghg_inventory.html</loc>
   </url>
   <url>
     <loc>https://brandon-mcn.github.io/ghgtools/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://brandon-mcn.github.io/ghgtools/reference/load_data.html</loc>
   </url>
 </urlset>

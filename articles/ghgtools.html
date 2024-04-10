@@ -118,42 +118,5069 @@ other GHG-producing activities across each of your assets.</p>
 <p>First, we need to load ghgtools <br></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://brandon-mcn.github.io/ghgtools/">ghgtools</a></span><span class="op">)</span></span></code></pre></div>
-<p><br> The emission factor library, abbreviated as EFL, is loaded from
-the ghgtools package. The raw form of the EFL has a row of data for each
-greenhouse gas produced by the activity. For example, burning natural
-gas will generate CO2, CH4 and N2O. We use the function
-<code><a href="../reference/create_efl.html">create_efl()</a></code> to assign global warming potentials to each
-greenhouse gas and produce an emission factor in units of carbon dioxide
-equivalents (CO2e). The only argument for <code><a href="../reference/create_efl.html">create_efl()</a></code> is
-the selection of GWPs (choices are “SAR”, “AR4”, “AR5”, or “AR6”). If
-you have no preference for GWPs, we recommend following UNFCCC
-guidelines, which require the use of GWP values from the IPCC’s Fifth
-Assessment Report (AR5). <br> You will need a working directory set to
-use ghgtools. If you do not already have a working directory set, use
-<code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd()</a></code>. <br></p>
+<p><br> The emission factor library, <code>EFLibrary</code>, is loaded
+from the ghgtools package. There is a row of data for each greenhouse
+gas produced by the activity. For example, burning natural gas will
+generate CO2, CH4 and N2O. <code>EFLibrary</code> is loaded when you
+library ghgtools. <br></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/create_efl.html">create_efl</a></span><span class="op">(</span><span class="st">"AR5"</span><span class="op">)</span></span></code></pre></div>
-<p><br> Now we need to create our data input templates in the working
-directory. Use <code><a href="../reference/create_templates.html">create_templates()</a></code> <br></p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/" class="external-link">kableExtra</a></span><span class="op">)</span></span>
+<span><span class="va">EFLibrary</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">EFLibrary</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">""</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">EFLibrary</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html" class="external-link">kable_material</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"hover"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/scroll_box.html" class="external-link">scroll_box</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="st">"400px"</span><span class="op">)</span></span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class="table  lightable-material lightable-striped lightable-hover" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ef_source
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ef_publishdate
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+ef_activeyear
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+service_type
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+unit
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+emission_category
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+service_subcategory1
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+service_subcategory2
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+emission_scope
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+country
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+subregion
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ghg
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ghg_unit
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+source_emission_factor
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+unit_conversion
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+conversion_factor
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+ghg_perunit
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Aviation Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8.31
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.310e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Aviation Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Aviation Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Biodiesel (100%)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+9.45
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+9.450e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Biodiesel (100%)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Biodiesel (100%)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Compressed Natural Gas (CNG)
+</td>
+<td style="text-align:left;">
+scf
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.05444
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+5.444e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Compressed Natural Gas (CNG)
+</td>
+<td style="text-align:left;">
+scf
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Compressed Natural Gas (CNG)
+</td>
+<td style="text-align:left;">
+scf
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Diesel Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+10.21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.021e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Diesel Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Diesel Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethanol (100%)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+5.75
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+5.750e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethanol (100%)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethanol (100%)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene-Type Jet Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+9.75
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+9.750e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene-Type Jet Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene-Type Jet Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Natural Gas (LNG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+4.5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.500e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Natural Gas (LNG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Natural Gas (LNG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Petroleum Gases (LPG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+5.68
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+5.680e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Petroleum Gases (LPG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Petroleum Gases (LPG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Motor Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8.78
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.780e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Motor Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Motor Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Residual Fuel Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+11.27
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.127e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Residual Fuel Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Residual Fuel Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Mobile
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+0.000e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Asphalt and Road Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+11.91
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.191e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Asphalt and Road Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00047
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.700e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Asphalt and Road Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+9e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+9.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Aviation Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8.31
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.310e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Aviation Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00036
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.600e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Aviation Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+7e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+7.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Butane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+6.67
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+6.670e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Butane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00031
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.100e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Butane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+6e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+6.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Butylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+7.22
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+7.220e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Butylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00032
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.200e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Butylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+6e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+6.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Crude Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+10.29
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.029e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Crude Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00041
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.100e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Crude Oil
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 1
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+10.18
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.018e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 1
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00042
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.200e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 1
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 2
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+10.21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.021e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 2
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00041
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.100e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 2
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 4
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+10.96
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.096e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 4
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00044
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.400e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Distillate Fuel Oil No. 4
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+9e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+9.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+4.05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.050e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+2e-04
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+2.000e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+4e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+3.83
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.830e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00017
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.700e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Ethylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+3e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Heavy Gas Oils
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+11.09
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.109e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Heavy Gas Oils
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00044
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.400e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Heavy Gas Oils
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+9e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+9.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Isobutane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+6.43
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+6.430e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Isobutane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+3e-04
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.000e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Isobutane
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+6e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+6.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Isobutylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+7.09
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+7.090e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Isobutylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00031
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.100e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Isobutylene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+6e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+6.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+10.15
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.015e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00041
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.100e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene-Type Jet Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+9.75
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+9.750e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene-Type Jet Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00041
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.100e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Kerosene-Type Jet Fuel
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Petroleum Gases (LPG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+5.68
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+5.680e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Petroleum Gases (LPG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00028
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+2.800e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Liquefied Petroleum Gases (LPG)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+6e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+6.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Lubricants
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+10.69
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.069e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Lubricants
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00043
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+4.300e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Lubricants
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+9e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+9.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Motor Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8.78
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.780e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Motor Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00038
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.800e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Motor Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Naphtha (&lt;401 deg F)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8.5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.500e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Naphtha (&lt;401 deg F)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00038
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.800e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Naphtha (&lt;401 deg F)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+8e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+8.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+scf
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.05444
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+5.444e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+mmBtu
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+53.06
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+5.306e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+therms
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+5.306
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+5.306e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+scf
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+1.03e-06
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.000e-06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+mmBtu
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.000e-03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+therms
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+1e-04
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.000e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+scf
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+1e-07
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.000e-07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+mmBtu
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+1e-04
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.000e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gas
+</td>
+<td style="text-align:left;">
+therms
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+1e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+7.36
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+7.360e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CH4
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+0.00033
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+3.300e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Natural Gasoline
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+N2O
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+7e-05
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+7.000e-05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPA CCCL Emission Factors for GHG Inventories
+</td>
+<td style="text-align:left;">
+2023-09-12
+</td>
+<td style="text-align:right;">
+2023
+</td>
+<td style="text-align:left;">
+Other Oil (&gt;401 deg F)
+</td>
+<td style="text-align:left;">
+gallons
+</td>
+<td style="text-align:left;">
+Stationary
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Scope 1
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+CO2
+</td>
+<td style="text-align:left;">
+kg
+</td>
+<td style="text-align:left;">
+10.59
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+kg_per_kg
+</td>
+<td style="text-align:right;">
+1.059e+01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br> If you want to export the EFLibrary and consolidate each
+emission factor into carbon dioxide equivalents (CO2e), you can use
+<code>export_efl</code>. When using <code>export_efl</code>, input your
+selection of GWPs (choices are “SAR”, “AR4”, “AR5”, or “AR6”). If you
+have no preference for GWPs, we recommend following UNFCCC guidelines,
+which require the use of GWP values from the IPCC’s Fifth Assessment
+Report (AR5). <br></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/create_templates.html">create_templates</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Success! Check your directory for .csv templates"                               </span></span>
-<span><span class="co">#&gt; [2] "Add your data to these templates, making sure not to change the column headers" </span></span>
-<span><span class="co">#&gt; [3] "With your data in the templates, run `check_load_data` to load your data into r"</span></span></code></pre></div>
-<p><br> The next steps are provided in the return message from
-<code><a href="../reference/create_templates.html">create_templates()</a></code>. It’s time to load you data into
-<strong>AssetPortfolio.csv</strong> and
-<strong>ActivityData.csv</strong>. If you’d just like to experiment with
-the functionality of ghgtools, you can leave the templates as is. There
-is some dummy data pre-populated in the templates. Once your data is
-loaded, run <code><a href="../reference/check_load_data.html">check_load_data()</a></code> to load data from the input
-templates into global environment variables. <br></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/check_load_data.html">check_load_data</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Success! Check your global environment for 'Activity_Data', 'Asset_Portfolio', and 'EF_Library'"</span></span>
-<span><span class="co">#&gt; [2] "You are now ready to run 'ghg_inventory' and calculate some GHG emissions!"</span></span></code></pre></div>
-<p><br> Great! The data loaded successfully. Let’s take a look at the
-emission factor library <br></p>
+<code class="sourceCode R"><span><span class="va">AR5_EFL</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/export_efl.html">export_efl</a></span><span class="op">(</span><span class="st">"AR5"</span><span class="op">)</span></span>
+<span><span class="va">AR5_EFL</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">AR5_EFL</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">""</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">AR5_EFL</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_classic.html" class="external-link">kable_material</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"hover"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/scroll_box.html" class="external-link">scroll_box</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="st">"400px"</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table  lightable-material lightable-striped lightable-hover" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
 <thead><tr>
@@ -4076,7 +9103,26 @@ AR5
 </tbody>
 </table>
 </div>
-<p><br> And our Activity Data <br></p>
+<p><br> Now we need to create our data input templates in the working
+directory. Use <code><a href="../reference/create_templates.html">create_templates()</a></code> <br></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/create_templates.html">create_templates</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Success! Check your directory for .csv templates"                               </span></span>
+<span><span class="co">#&gt; [2] "Add your data to these templates, making sure not to change the column headers" </span></span>
+<span><span class="co">#&gt; [3] "With your data in the templates, run `check_load_data` to load your data into r"</span></span></code></pre></div>
+<p><br> The next steps are provided in the return message from
+<code><a href="../reference/create_templates.html">create_templates()</a></code>. It’s time to load you data into
+<strong>AssetPortfolio.csv</strong> and
+<strong>ActivityData.csv</strong>. If you’d just like to experiment with
+the functionality of ghgtools, you can leave the templates as is. There
+is some dummy data pre-populated in the templates. Once your data is
+loaded, run <code>check_load_data()</code> to load data from the input
+templates into global environment variables. <br></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/load_data.html">load_data</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Success! Check your global environment for 'Activity_Data', 'Asset_Portfolio', and 'EF_Library'"</span></span></code></pre></div>
+<p><br> Great! The data loaded successfully. Let’s take a look at the
+emission factor library <br></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table  lightable-material lightable-striped lightable-hover" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
 <thead><tr>
@@ -5246,11 +10292,459 @@ passenger-mile
 </tbody>
 </table>
 </div>
-<p><br> Now that the input data is properly loaded into r, you are ready
-to run <code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code>. <br></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ghg_inventory.html">ghg_inventory</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Success! Check your directory for 'GHGrawdata.csv'"</span></span></code></pre></div>
+<p><br> And our Asset Portfolio <br></p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class="table  lightable-material lightable-striped lightable-hover" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+asset_id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+state
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+country
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+sqft
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+region
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+business_unit
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+asset_type
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+asset_subtype
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+year_built
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+B1456
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Bellingham
+</td>
+<td style="text-align:left;">
+Washington
+</td>
+<td style="text-align:left;">
+98226
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+342
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+1993
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B1457
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Bellingham
+</td>
+<td style="text-align:left;">
+Washington
+</td>
+<td style="text-align:left;">
+98225
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+3280
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+2005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B1458
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Bellingham
+</td>
+<td style="text-align:left;">
+Washington
+</td>
+<td style="text-align:left;">
+98225
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+20142
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+2003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B1564
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Woodinville
+</td>
+<td style="text-align:left;">
+Washington
+</td>
+<td style="text-align:left;">
+98072
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+3636
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+1990
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B1662
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Portland
+</td>
+<td style="text-align:left;">
+Oregon
+</td>
+<td style="text-align:left;">
+97202
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+4821
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+2007
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B1663
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Portland
+</td>
+<td style="text-align:left;">
+Oregon
+</td>
+<td style="text-align:left;">
+97229
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+4316
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+2015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B1866
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sacramento
+</td>
+<td style="text-align:left;">
+California
+</td>
+<td style="text-align:left;">
+95816
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+6074
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+1999
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B1867
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sacramento
+</td>
+<td style="text-align:left;">
+California
+</td>
+<td style="text-align:left;">
+95825
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+3959
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+2004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B1868
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sacramento
+</td>
+<td style="text-align:left;">
+California
+</td>
+<td style="text-align:left;">
+95825
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+8070
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+2004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B2074
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Indio
+</td>
+<td style="text-align:left;">
+California
+</td>
+<td style="text-align:left;">
+92203
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+3543
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+Operations
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+Office
+</td>
+<td style="text-align:left;">
+2010
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Enterprise
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+United States
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+West Coast
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Enterprise
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br> The core function of ghgtools is <code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code>.
+This function requires activity data, an asset portoflio, and a GWP
+selection. <code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code> will default to the internal
+emission factor library <code>EFLibrary</code> if no selection is made.
+You may create your own EFL and use it in <code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code>
+if you like. <br></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">GHG_rawdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ghg_inventory.html">ghg_inventory</a></span><span class="op">(</span><span class="va">Activity_Data</span>, <span class="va">Asset_Portfolio</span>, <span class="st">"AR5"</span><span class="op">)</span></span></code></pre></div>
 <p><br> Let’s take a look at the ghg inventory that was calculated
 <br></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
@@ -8385,11 +13879,11 @@ AR5
 <p><br><code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code> has merged our AssetPortoflio,
 ActivityData, and EFL to generate a GHG emissions inventory report.
 Let’s take a quick look at how we might visualize this data. <br></p>
-<p><img src="ghgtools_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
-<p><br></p>
 <p><img src="ghgtools_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
 <p><br></p>
 <p><img src="ghgtools_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+<p><br></p>
+<p><img src="ghgtools_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
