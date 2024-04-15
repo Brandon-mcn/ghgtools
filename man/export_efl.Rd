@@ -4,10 +4,12 @@
 \alias{export_efl}
 \title{export_efl}
 \usage{
-export_efl(GWP)
+export_efl(GWP, EFL = EFLibrary)
 }
 \arguments{
 \item{GWP}{Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"}
+
+\item{EFL}{Emissions Factor Library organized according to the template. Defaults to \code{EFLibrary}}
 }
 \value{
 The consolidated emission factor library

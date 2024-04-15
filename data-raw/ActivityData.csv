@@ -1,4 +1,4 @@
-asset_id,vendor,account_id,meter_number,date,year,cost,service_type,service_subcategory1,service_subcategory2,unit,usage
+asset_id,supplier,account_id,meter_number,date,year,cost,service_type,service_subcategory1,service_subcategory2,unit,usage
 B1456,,,,,2023,,Electricity,,,kWh,31231.907
 B1457,,,,,2023,,Electricity,,,kWh,19389.588
 B1458,,,,,2023,,Electricity,,,kWh,185862.407
