@@ -1,6 +1,6 @@
 Package: ghgtools
 Title: Standardized GHG Accounting
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("Brandon", "McNamara", , "bm2484@nau.edu", role = c("aut", "cre"))
 Description: Calculates GHG emissions from activity data based on attributes in an asset portoflio.
