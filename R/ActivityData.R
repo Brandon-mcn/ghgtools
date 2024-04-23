@@ -19,5 +19,4 @@
 #'   \item{usage}{Required input. The amount of the activity or service.}
 #'   ...
 #' }
-#' @seealso [ghgtools.io](ghgtools.io)
 "ActivityData"

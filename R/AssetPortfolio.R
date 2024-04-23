@@ -11,7 +11,7 @@
 #'   \item{state}{Optional input. State of the asset.}
 #'   \item{zip}{Required input for USA. Must be a numberic 5-digit zip code. Zip code is required for selecting the correct emisison factor for electricity in the USA.}
 #'   \item{country}{Required input. Country of the asset.}
-#'   \item{sqft}{Optional input. Square feet for buildings.}
+#'   \item{sqft}{Optional input. Square feet for buildings. Must be numeric value.}
 #'   \item{region}{Optional input. Can be any value.}
 #'   \item{buisness_unit}{Optional input. Can be any value.}
 #'   \item{asset_type}{Required input. Must match an asset type in the Ecat_lookup table.}
@@ -19,5 +19,4 @@
 #'   \item{year_built}{Optional input. The year the asset was built.}
 #'   ...
 #' }
-#' @seealso [ghgtools.io](ghgtools.io)
 "AssetPortfolio"

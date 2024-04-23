@@ -31,7 +31,4 @@ ActivityData
 \description{
 A template for activity data used in ghgtools. You must follow the template structure in order for ghgtools to function properly.
 }
-\seealso{
-\url{ghgtools.io}
-}
 \keyword{datasets}
