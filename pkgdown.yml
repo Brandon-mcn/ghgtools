@@ -3,7 +3,7 @@ pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   ghgtools: ghgtools.html
-last_built: 2024-04-19T23:01Z
+last_built: 2024-04-23T00:32Z
 urls:
   reference: https://brandon-mcn.github.io/ghgtools/reference
   article: https://brandon-mcn.github.io/ghgtools/articles
