@@ -68,12 +68,13 @@ ghg_inventory <- function(AD, AP, GWP, EFL = EFLibrary){
 
   # Add column to specify the emission category
   AD1[, emission_category := ifelse(asset_type == "Vehicle", "Mobile",
+                              ifelse(asset_type == "Equipment", asset_subtype,
                               ifelse(service_type == "Steam" | service_type == "Chilled Water" | service_type == "Electricity", "Indirect Energy",
-                                ifelse(service_type == "Purchased Goods and Services", "Purchased Goods and Services",
-                                  ifelse(service_type == "Capital Goods", "Capital Goods",
-                                    ifelse(service_type == "Business Travel", "Business Travel",
-                                      ifelse(service_type == "Employee Commuting", "Employee Commuting",
-                                             "Stationary"))))))]
+                              ifelse(service_type == "Purchased Goods and Services", "Purchased Goods and Services",
+                              ifelse(service_type == "Capital Goods", "Capital Goods",
+                              ifelse(service_type == "Business Travel", "Business Travel",
+                              ifelse(service_type == "Employee Commuting", "Employee Commuting",
+                              "Stationary")))))))]
 
   # Add column to specify the eGRID subregion for electricity
   AD1 <- data.table(merge.data.table(AD1, eGRIDlookup, sort = FALSE, all.x = TRUE))

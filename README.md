@@ -30,7 +30,4 @@ devtools::install_github("Brandon-mcn/ghgtools")
 
 Read [Get
 Started](https://brandon-mcn.github.io/ghgtools/articles/ghgtools.html)
-to learn more about how to use ghgtools. Check out [Data
-Templates](https://brandon-mcn.github.io/ghgtools/articles/Data-Templates.html)
-to download the required ghgtools templates and learn about data
-validation rules for each field.
+to learn more about how to use ghgtools.
