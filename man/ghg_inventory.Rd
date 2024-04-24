@@ -4,7 +4,7 @@
 \alias{ghg_inventory}
 \title{ghg_inventory}
 \usage{
-ghg_inventory(AD, AP, GWP, EFL = EFLibrary)
+ghg_inventory(AD, AP, GWP = "AR5", EFL = EFLibrary)
 }
 \arguments{
 \item{AD}{Activity Data organized according to the template.}

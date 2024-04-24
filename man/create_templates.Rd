@@ -4,7 +4,7 @@
 \alias{create_templates}
 \title{create_templates}
 \usage{
-create_templates()
+create_templates(output_location = NULL)
 }
 \value{
 The activity data, asset portfolio templates, and the full emission factor library
