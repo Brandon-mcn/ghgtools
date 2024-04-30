@@ -100,7 +100,7 @@ ghg_inventory <- function(AD, AP, GWP, EFL = EFLibrary){
   GHGrawdata[, mt_co2e := kg_co2e/1000]
 
   # Organize data
-  setcolorder(GHGrawdata, c("asset_id", "asset_type", "asset_subtype", "address", "city",
+  setcolorder(GHGrawdata, c("asset_id", "asset_name","asset_type", "asset_subtype", "asset_description", "address", "city",
                             "state", "zip", "country", "region", "subregion", "business_unit",
                             "year_built", "sqft", "service_type", "unit", "supplier", "account_id",
                             "meter_number", "date", "year", "cost", "usage", "emission_category",

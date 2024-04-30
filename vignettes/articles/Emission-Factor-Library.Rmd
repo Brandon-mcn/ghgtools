@@ -18,7 +18,7 @@ library(ghgtools)
 library(knitr)
 EFL <- EFLibrary
 ```
-
+<br>
 ### Years Covered
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -26,7 +26,7 @@ Year <- EFL[, "ef_activeyear"]
 year_list <- unique(Year)
 kable(year_list, align = "l")
 ```
-
+<br>
 ### Scope 1 & 2 Service Types Covered
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -35,7 +35,7 @@ ST <- S12EFL[, c("service_type", "emission_category")]
 ST_list <- unique(ST)
 kable(ST_list)
 ```
-
+<br>
 ### Scope 3 Categories Covered
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}

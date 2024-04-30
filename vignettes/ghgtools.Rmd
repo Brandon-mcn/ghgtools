@@ -32,22 +32,21 @@ The following data sets are required to use ghgtools and calculate GHG emissions
 ## How it Works
 
 First, we need to load ghgtools
-<br>
 
 ```{r setup}
 library(ghgtools)
 ```
 
-<br>
-The emission factor library, `EFLibrary`, is loaded from the ghgtools package. There is a row of data for each greenhouse gas produced by the activity. For example, burning natural gas will generate CO2, CH4 and N2O. `EFLibrary` is loaded when you library ghgtools.
+The emission factor library, `EFLibrary`, is loaded from the ghgtools package. There is a row of data for each greenhouse gas produced by the activity. For example, burning natural gas will generate CO2, CH4 and N2O. `EFLibrary` is loaded when you library ghgtools. An example of the emission factors for _Aviation Gasoline_ is provided below. Check out the [Emission Factor Library](https://ghgtools.io/articles/Emission-Factor-Library.html) article online for more guidance and information. 
+
 <br>
 
-```{r, include=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(kableExtra)
 EFLibrary[is.na(EFLibrary)] <- ""
-kbl(head(EFLibrary, 100)) %>%
+kbl(head(EFLibrary, 3)) %>%
   kable_material(c("striped", "hover")) %>%
-  scroll_box(width = "100%", height = "400px")
+  scroll_box(width = "100%", height = "100%")
 ```
 
 <br>
@@ -58,26 +57,28 @@ ghgtools comes with templates for activity data and the asset portoflio. You can
 create_templates()
 ```
 
+See below for some example data from the templates. 
+
 <br>
-**Activity Data Template**
+**Activity Data Template** - _See_ [_ActivityData_](https://ghgtools.io/reference/ActivityData.html) _reference documentation for more information about the activity data template._
 <br>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ActivityData[is.na(ActivityData)] <- ""
-kbl(head(ActivityData, 100)) %>%
+kbl(head(ActivityData, 4)) %>%
   kable_material(c("striped", "hover")) %>%
-  scroll_box(width = "100%", height = "400px")
+  scroll_box(width = "100%", height = "100%")
 ```
 
 <br>
-**Asset Portfolio Template**
+**Asset Portfolio Template** - _See_ [_AssetPortfolio_](https://ghgtools.io/reference/AssetPortfolio.html) _reference documentation for more information about the asset portfolio template._
 <br>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 AssetPortfolio[is.na(AssetPortfolio)] <- ""
-kbl(head(AssetPortfolio, 100)) %>%
+kbl(head(AssetPortfolio, 3)) %>%
   kable_material(c("striped", "hover")) %>%
-  scroll_box(width = "100%", height = "400px")
+  scroll_box(width = "100%", height = "100%")
 ```
 
 <br>
@@ -98,15 +99,12 @@ My_AssetPortfolio <- fread("AssetPortfolio.csv")
 My_EFLibrary <- fread("EFLibrary.csv")
 ```
 
-<br>
 With the variables created above, you can run `ghg_inventory()`.
-<br>
 
 ```{r, include=TRUE, message=FALSE, warning=FALSE}
 GHG_rawdata <- ghg_inventory(My_ActivityData, My_AssetPortfolio, "AR5", My_EFLibrary)
 ```
 
-<br>
 Let's take a look at the ghg inventory that was calculated:
 <br>
 

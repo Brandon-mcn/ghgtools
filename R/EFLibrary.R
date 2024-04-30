@@ -25,6 +25,6 @@
 #'   \item{ghg_perunit}{Emission factor in kg ghg per service type unit.}
 #'   ...
 #' }
-#' @seemore <ghgtools.io>
+#' @seemore <https://ghgtools.io/articles/Emission-Factor-Library.html>
 "EFLibrary"
 
