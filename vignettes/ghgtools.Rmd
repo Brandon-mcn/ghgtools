@@ -80,6 +80,8 @@ kbl(head(AssetPortfolio, 3)) %>%
   scroll_box(width = "100%", height = "100%")
 ```
 
+<br>
+
 ## Running ghg_inventory()
 
 The core function of ghgtools is `ghg_inventory()`. This function requires activity data, an asset portoflio, and a GWP selection.You may choose to provide an emission factor library, otherwise `ghg_inventory()` will default to the internal emission factor library `EFLibrary`

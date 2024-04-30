@@ -6,13 +6,14 @@
 #'
 #' @param AD Activity Data organized according to the template.
 #' @param AP Asset Portfolio organized according the template.
-#' @param GWP Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6".
+#' @param GWP Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "TAR", "AR4", or "AR5".
 #' @param EFL Emissions Factor Library organized according to the template. Defaults to \code{EFLibrary}
 #'
 #' @return The GHG raw data
 #'
 #' @examples
-#' ghg_inventory(ActivityData, AssetPortfolio, "AR5")
+#' AR5_Inventory <- ghg_inventory(ActivityData, AssetPortfolio, "AR5")
+#' head(AR5_Inventory)
 #'
 #' @import data.table
 #'

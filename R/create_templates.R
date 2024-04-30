@@ -1,6 +1,6 @@
 #' create_templates
 #'
-#' This function creates the activity data and asset portfolio templates as CSV files in your project directory.
+#' This function takes \code{\link{ActivityData}}, \code{\link{AssetPortfolio}}, and \code{\link{EFLibrary}} from ghgtools and creates a csv file for each in your project directory.
 #'
 #' @return The activity data, asset portfolio templates, and the full emission factor library
 #' @import data.table

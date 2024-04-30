@@ -7,7 +7,7 @@
 co2e_efl(GWP, EFL = EFLibrary)
 }
 \arguments{
-\item{GWP}{Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"}
+\item{GWP}{Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "TAR", "AR4", or "AR5".}
 
 \item{EFL}{Emissions Factor Library organized according to the template. Defaults to \code{EFLibrary}}
 }

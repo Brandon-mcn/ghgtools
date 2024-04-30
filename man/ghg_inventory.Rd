@@ -11,7 +11,7 @@ ghg_inventory(AD, AP, GWP, EFL = EFLibrary)
 
 \item{AP}{Asset Portfolio organized according the template.}
 
-\item{GWP}{Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6".}
+\item{GWP}{Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "TAR", "AR4", or "AR5".}
 
 \item{EFL}{Emissions Factor Library organized according to the template. Defaults to \code{EFLibrary}}
 }
@@ -22,7 +22,8 @@ The GHG raw data
 Calculates a GHG inventory using input data from EF_Library, Asset_Portfolio, and Activity_Data variables in the global environment.
 }
 \examples{
-ghg_inventory(ActivityData, AssetPortfolio, "AR5")
+AR5_Inventory <- ghg_inventory(ActivityData, AssetPortfolio, "AR5")
+head(AR5_Inventory)
 
 }
 \seealso{

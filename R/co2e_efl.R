@@ -3,7 +3,7 @@
 #' This function consolidates and returns an emission factor library based on your selection of global warming potentials (GWPs). If you have no preference for GWPs, we recommend following UNFCCC guidelines, which require the use of GWP values from the IPCC's Fifth Assessment Report (AR5).
 #'
 #' @seealso [Gudiance from EPA about GWPs](https://www.epa.gov/ghgemissions/understanding-global-warming-potentials)
-#' @param GWP Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6"
+#' @param GWP Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "TAR", "AR4", or "AR5".
 #' @param EFL Emissions Factor Library organized according to the template. Defaults to \code{EFLibrary}
 #' @return An emission factor library with CO2e values based on your GWP selection.
 #' @import data.table
