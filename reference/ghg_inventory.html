@@ -68,7 +68,7 @@
 
 
 <dt>GWP</dt>
-<dd><p>Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "AR4", "AR5", or "AR6".</p></dd>
+<dd><p>Select your GWPs. Enter with quotation marks in the function. Choices are "SAR", "TAR", "AR4", or "AR5".</p></dd>
 
 
 <dt>EFL</dt>
@@ -88,436 +88,72 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">ghg_inventory</span><span class="op">(</span><span class="va">ActivityData</span>, <span class="va">AssetPortfolio</span>, <span class="st">"AR5"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       asset_id asset_name asset_type asset_subtype     asset_description</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         &lt;char&gt;     &lt;char&gt;     &lt;char&gt;        &lt;char&gt;                &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:      B1456              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:      B1457              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:      B1458              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:      B1458              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:      B1564              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:      B1564              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:      B1662              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:      B1662              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:      B1663              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:      B1663              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:      B1866              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:      B1867              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:      B1868              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:      B2074              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:      B2074              Building        Office                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:      LS101             Equipment        Mobile Landscaping equipment</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36: Enterprise            Enterprise                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       asset_id asset_name asset_type asset_subtype     asset_description</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     address        city      state    zip       country     region subregion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      &lt;char&gt;      &lt;char&gt;     &lt;char&gt; &lt;char&gt;        &lt;char&gt;     &lt;char&gt;    &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:          Bellingham Washington  98226 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:          Bellingham Washington  98225 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:          Bellingham Washington  98225 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:          Bellingham Washington  98225 United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:         Woodinville Washington  98072 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:         Woodinville Washington  98072 United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:            Portland     Oregon  97202 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:            Portland     Oregon  97202 United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:            Portland     Oregon  97229 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:            Portland     Oregon  97229 United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:          Sacramento California  95816 United States West Coast      CAMX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:          Sacramento California  95825 United States West Coast      CAMX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:          Sacramento California  95825 United States West Coast      CAMX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:               Indio California  92203 United States West Coast      AZNM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:               Indio California  92203 United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:          Bellingham Washington  98226 United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:                                       United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     address        city      state    zip       country     region subregion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     business_unit year_built   sqft                 service_type           unit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            &lt;char&gt;     &lt;char&gt; &lt;char&gt;                       &lt;char&gt;         &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:    Operations       1993    342                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:    Operations       2005   3280                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:    Operations       2003  20142                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:    Operations       2003  20142                  Natural Gas         therms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:    Operations       1990   3636                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:    Operations       1990   3636                  Natural Gas         therms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:    Operations       2007   4821                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:    Operations       2007   4821                  Natural Gas         therms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:    Operations       2015   4316                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:    Operations       2015   4316                  Natural Gas         therms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:    Operations       1999   6074                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:    Operations       2004   3959                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:    Operations       2004   8070                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:    Operations       2010   3543                  Electricity            kWh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:    Operations       2010   3543                  Natural Gas         therms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:    Operations                                 Motor Gasoline        gallons</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:                                                Capital Goods            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:                                                Capital Goods            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:                                 Purchased Goods and Services            USD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:                                              Business Travel   vehicle-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:                                              Business Travel   vehicle-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:                                              Business Travel passenger-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:                                              Business Travel passenger-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:                                              Business Travel passenger-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:                                              Business Travel passenger-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:                                           Employee Commuting   vehicle-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:                                           Employee Commuting passenger-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:                                           Employee Commuting passenger-mile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     business_unit year_built   sqft                 service_type           unit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     supplier account_id meter_number   date  year   cost       usage</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       &lt;char&gt;     &lt;char&gt;       &lt;char&gt; &lt;char&gt; &lt;int&gt; &lt;char&gt;       &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                                          2023          31231.907</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                                          2023          19389.588</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                                          2023         185862.407</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                                          2023           2569.690</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                                          2023          47302.603</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                                          2023           1382.843</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                                          2023         106760.001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                                          2023           3541.052</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:                                          2023          74746.451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                                          2023           1793.131</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:                                          2023          85928.162</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:                                          2023          44956.454</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:                                          2023         106728.394</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:                                          2023          49348.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                                          2023             25.981</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:                                          2023            708.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:                                          2023          22219.240</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:                                          2023         424731.110</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:                                          2023         533840.640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:                                          2023         130615.220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:                                          2023         988346.400</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:                                          2023         154157.660</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:                                          2023          42621.180</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:                                          2023         160131.340</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:                                          2023          15929.275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:                                          2023         321181.500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:                                          2023        1795761.130</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:                                          2023          15000.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:                                          2023            500.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:                                          2023          37000.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:                                          2023          60000.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:                                          2023         110000.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:                                          2023          73000.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:                                          2023          70000.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:                                          2023          84000.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:                                          2023           3000.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     supplier account_id meter_number   date  year   cost       usage</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                emission_category</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                           &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                   Stationary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                   Stationary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                   Stationary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                   Stationary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:              Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                   Stationary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:                       Mobile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:                Capital Goods</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:                Capital Goods</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27: Purchased Goods and Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:              Business Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:              Business Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:              Business Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:              Business Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:              Business Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:              Business Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:           Employee Commuting</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:           Employee Commuting</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:           Employee Commuting</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                emission_category</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                    service_subcategory1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:                                       Manufacturing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:                                       Manufacturing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:    Professional, Scientific, and Technical Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:    Professional, Scientific, and Technical Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:    Professional, Scientific, and Technical Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22: Administrative and Support and Waste Mgmt. Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23: Administrative and Support and Waste Mgmt. Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24: Administrative and Support and Waste Mgmt. Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25: Administrative and Support and Waste Mgmt. Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:                                Educational Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:                                         Information</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:                                       Ground Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:                                       Ground Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:                                         Rail Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:                                          Air Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:                                          Air Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:                                          Air Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:                                       Ground Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:                                         Rail Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:                                       Ground Travel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                    service_subcategory1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                service_subcategory2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                              &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:                                                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:                               Electronic Computer Manufacturing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18: All Other Miscellaneous General Purpose Machinery Manufacturing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:                                        All Other Legal Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:                             Human Resources Consulting Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:                                Landscape Architectural Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:                                     Facilities Support Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:                                             Janitorial Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:                                  Office Administrative Services</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:                   Security Systems Services (except Locksmiths)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:                Professional and Management Development Training</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:         Wireless Telecommunications Carriers (except Satellite)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:                                                   Passenger Car</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:                                                Light-Duty Truck</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:                               Intercity Rail - National Average</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:                                         Air Travel - Short Haul</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:                                        Air Travel - Medium Haul</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:                                          Air Travel - Long Haul</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:                                                   Passenger Car</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:                                                    Transit Rail</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:                                                             Bus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                service_subcategory2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     emission_scope co2_kgperunit ch4_kgperunit n2o_kgperunit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             &lt;char&gt;         &lt;num&gt;         &lt;num&gt;         &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:        Scope 2    0.27310248   0.000025400      3.63e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:        Scope 2    0.27310248   0.000025400      3.63e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:        Scope 2    0.27310248   0.000025400      3.63e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:        Scope 1    5.30600000   0.000100000      1.00e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:        Scope 2    0.27310248   0.000025400      3.63e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:        Scope 1    5.30600000   0.000100000      1.00e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:        Scope 2    0.27310248   0.000025400      3.63e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:        Scope 1    5.30600000   0.000100000      1.00e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:        Scope 2    0.27310248   0.000025400      3.63e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:        Scope 1    5.30600000   0.000100000      1.00e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:        Scope 2    0.22563631   0.000013600      1.81e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:        Scope 2    0.22563631   0.000013600      1.81e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:        Scope 2    0.22563631   0.000013600      1.81e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:        Scope 2    0.35200395   0.000023100      3.18e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:        Scope 1    5.30600000   0.000100000      1.00e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:        Scope 1    8.78000000   0.000380000      8.00e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:        Scope 3    0.08213751   0.000290519      1.22e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:        Scope 3    0.20160225   0.000610969      2.48e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:        Scope 3    0.04076063   0.000156704      4.63e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:        Scope 3    0.06056871   0.000297561      8.58e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:        Scope 3    0.09331807   0.000328374      1.83e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:        Scope 3    0.16022537   0.000691962      2.41e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:        Scope 3    0.10916454   0.000526455      2.46e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:        Scope 3    0.07720750   0.000337178      1.62e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:        Scope 3    0.06030460   0.000255304      7.75e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:        Scope 3    0.09155736   0.000518532      1.03e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:        Scope 3    0.12765208   0.000414649      1.57e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:        Scope 3    0.31300000   0.000008000      7.00e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:        Scope 3    0.46700000   0.000013000      1.20e-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:        Scope 3    0.11300000   0.000009200      2.60e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:        Scope 3    0.20700000   0.000006400      6.60e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:        Scope 3    0.12900000   0.000000600      4.10e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:        Scope 3    0.16300000   0.000000600      5.20e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:        Scope 3    0.31300000   0.000008000      7.00e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:        Scope 3    0.09600000   0.000008000      1.10e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:        Scope 3    0.05500000   0.000006300      1.10e-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     emission_scope co2_kgperunit ch4_kgperunit n2o_kgperunit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     otherghgs_kgco2eperunit gwps_ar co2_gwp ch4_gwp n2o_gwp kgco2e_perunit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       &lt;num&gt;  &lt;char&gt;   &lt;num&gt;   &lt;num&gt;   &lt;num&gt;          &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:             0.000000000     AR5       1      28     265     0.27477563</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:             0.000000000     AR5       1      28     265     0.27477563</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:             0.000000000     AR5       1      28     265     0.27477563</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:             0.000000000     AR5       1      28     265     5.31145000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:             0.000000000     AR5       1      28     265     0.27477563</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:             0.000000000     AR5       1      28     265     5.31145000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:             0.000000000     AR5       1      28     265     0.27477563</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:             0.000000000     AR5       1      28     265     5.31145000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:             0.000000000     AR5       1      28     265     0.27477563</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:             0.000000000     AR5       1      28     265     5.31145000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:             0.000000000     AR5       1      28     265     0.22649676</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:             0.000000000     AR5       1      28     265     0.22649676</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:             0.000000000     AR5       1      28     265     0.22649676</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:             0.000000000     AR5       1      28     265     0.35349345</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:             0.000000000     AR5       1      28     265     5.31145000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:             0.000000000     AR5       1      28     265     8.81184000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:             0.006331180     AR5       1      28     265     0.09983622</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:             0.005086548     AR5       1      28     265     0.23036793</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:             0.001760222     AR5       1      28     265     0.04813551</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:             0.004334808     AR5       1      28     265     0.07550893</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:             0.003468095     AR5       1      28     265     0.11083014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:             0.003907998     AR5       1      28     265     0.18989481</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:             0.023245663     AR5       1      28     265     0.15366994</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:             0.002818255     AR5       1      28     265     0.09375974</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:             0.001950176     AR5       1      28     265     0.07145704</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:             0.003190400     AR5       1      28     265     0.11199615</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:             0.007336870     AR5       1      28     265     0.15075962</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:             0.000000000     AR5       1      28     265     0.31507900</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:             0.000000000     AR5       1      28     265     0.47054400</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:             0.000000000     AR5       1      28     265     0.11394660</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:             0.000000000     AR5       1      28     265     0.20892820</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:             0.000000000     AR5       1      28     265     0.13010330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:             0.000000000     AR5       1      28     265     0.16439480</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:             0.000000000     AR5       1      28     265     0.31507900</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:             0.000000000     AR5       1      28     265     0.09651550</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:             0.000000000     AR5       1      28     265     0.05546790</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     otherghgs_kgco2eperunit gwps_ar co2_gwp ch4_gwp n2o_gwp kgco2e_perunit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          kg_co2      kg_ch4      kg_n2o     kg_co2e     mt_co2e</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           &lt;num&gt;       &lt;num&gt;       &lt;num&gt;       &lt;num&gt;       &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:   8529.5111   0.7932904  0.11337182   8581.7668   8.5817668</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:   5295.3445   0.4924955  0.07038420   5327.7862   5.3277862</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:  50759.4835   4.7209051  0.67468054  51070.4592  51.0704592</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:  13634.7751   0.2569690  0.02569690  13648.7800  13.6487800</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:  12918.4580   1.2014861  0.17170845  12997.6024  12.9976024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:   7337.3650   0.1382843  0.01382843   7344.9015   7.3449015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:  29156.4206   2.7117040  0.38753880  29335.0461  29.3350461</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:  18788.8219   0.3541052  0.03541052  18808.1206  18.8081206</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:  20413.4408   1.8985599  0.27132962  20538.5029  20.5385029</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:   9514.3531   0.1793131  0.01793131   9524.1256   9.5241256</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:  19388.5135   1.1686230  0.15552997  19462.4504  19.4624504</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:  10143.8084   0.6114078  0.08137118  10182.4912  10.1824912</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:  24081.8011   1.4515062  0.19317839  24173.6355  24.1736355</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:  17370.6908   1.1399388  0.15692664  17444.1947  17.4441947</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:    137.8552   0.0025981  0.00025981    137.9968   0.1379968</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:   6216.2400   0.2690400  0.05664000   6238.7827   6.2387827</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:   1825.0331   6.4551114  0.27107473   2218.2850   2.2182850</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:  85626.7491 259.4975415 10.53333153  97844.4285  97.8444285</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:  21759.6808  83.6549637  2.47168216  25696.6934  25.6966934</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:   7911.1956  38.8659955  1.12067859   9862.6153   9.8626153</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:  92230.5825 324.5472608 18.08673912 109538.5704 109.5385704</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:  24699.9684 106.6712427  3.71519961  29273.7389  29.2737389</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:   4652.7215  22.4381333  1.04848103   6549.5943   6.5495943</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:  12363.3406  53.9927650  2.59412771  15013.8729  15.0138729</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:    960.6086   4.0668076  0.12345188   1138.2589   1.1382589</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:  29406.5286 166.5428856  3.30816945  35971.0919  35.9710919</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27: 229232.6470 744.6105568 28.19344974 270728.2735 270.7282735</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:   4695.0000   0.1200000  0.10500000   4726.1850   4.7261850</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29:    233.5000   0.0065000  0.00600000    235.2720   0.2352720</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30:   4181.0000   0.3404000  0.09620000   4216.0242   4.2160242</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31:  12420.0000   0.3840000  0.39600000  12535.6920  12.5356920</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32:  14190.0000   0.0660000  0.45100000  14311.3630  14.3113630</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33:  11899.0000   0.0438000  0.37960000  12000.8204  12.0008204</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34:  21910.0000   0.5600000  0.49000000  22055.5300  22.0555300</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35:   8064.0000   0.6720000  0.09240000   8107.3020   8.1073020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36:    165.0000   0.0189000  0.00330000    166.4037   0.1664037</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          kg_co2      kg_ch4      kg_n2o     kg_co2e     mt_co2e</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                         ef_source ef_publishdate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            &lt;char&gt;         &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:          US EPA Supply Chain Emission Factors     04/20/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                         ef_source ef_publishdate</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">AR5_Inventory</span> <span class="op">&lt;-</span> <span class="fu">ghg_inventory</span><span class="op">(</span><span class="va">ActivityData</span>, <span class="va">AssetPortfolio</span>, <span class="st">"AR5"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">AR5_Inventory</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    asset_id asset_name asset_type asset_subtype asset_description address</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      &lt;char&gt;     &lt;char&gt;     &lt;char&gt;        &lt;char&gt;            &lt;char&gt;  &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:    B1456              Building        Office                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:    B1457              Building        Office                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:    B1458              Building        Office                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:    B1458              Building        Office                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:    B1564              Building        Office                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:    B1564              Building        Office                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           city      state    zip       country     region subregion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         &lt;char&gt;     &lt;char&gt; &lt;char&gt;        &lt;char&gt;     &lt;char&gt;    &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  Bellingham Washington  98226 United States West Coast      NWPP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  Bellingham Washington  98225 United States West Coast      NWPP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:  Bellingham Washington  98225 United States West Coast      NWPP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:  Bellingham Washington  98225 United States West Coast          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: Woodinville Washington  98072 United States West Coast      NWPP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: Woodinville Washington  98072 United States West Coast          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    business_unit year_built   sqft service_type   unit supplier account_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           &lt;char&gt;     &lt;char&gt; &lt;char&gt;       &lt;char&gt; &lt;char&gt;   &lt;char&gt;     &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:    Operations       1993    342  Electricity    kWh                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:    Operations       2005   3280  Electricity    kWh                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:    Operations       2003  20142  Electricity    kWh                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:    Operations       2003  20142  Natural Gas therms                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:    Operations       1990   3636  Electricity    kWh                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:    Operations       1990   3636  Natural Gas therms                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    meter_number   date  year   cost      usage emission_category</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          &lt;char&gt; &lt;char&gt; &lt;int&gt; &lt;char&gt;      &lt;num&gt;            &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:                      2023         31231.907   Indirect Energy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:                      2023         19389.588   Indirect Energy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:                      2023        185862.407   Indirect Energy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:                      2023          2569.690        Stationary</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:                      2023         47302.603   Indirect Energy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:                      2023          1382.843        Stationary</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    service_subcategory1 service_subcategory2 emission_scope co2_kgperunit</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  &lt;char&gt;               &lt;char&gt;         &lt;char&gt;         &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:                                                  Scope 2     0.2731025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:                                                  Scope 2     0.2731025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:                                                  Scope 2     0.2731025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:                                                  Scope 1     5.3060000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:                                                  Scope 2     0.2731025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:                                                  Scope 1     5.3060000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ch4_kgperunit n2o_kgperunit otherghgs_kgco2eperunit gwps_ar co2_gwp ch4_gwp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            &lt;num&gt;         &lt;num&gt;                   &lt;num&gt;  &lt;char&gt;   &lt;num&gt;   &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:      2.54e-05      3.63e-06                       0     AR5       1      28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:      2.54e-05      3.63e-06                       0     AR5       1      28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:      2.54e-05      3.63e-06                       0     AR5       1      28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:      1.00e-04      1.00e-05                       0     AR5       1      28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:      2.54e-05      3.63e-06                       0     AR5       1      28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:      1.00e-04      1.00e-05                       0     AR5       1      28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    n2o_gwp kgco2e_perunit    kg_co2    kg_ch4     kg_n2o   kg_co2e   mt_co2e</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      &lt;num&gt;          &lt;num&gt;     &lt;num&gt;     &lt;num&gt;      &lt;num&gt;     &lt;num&gt;     &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     265      0.2747756  8529.511 0.7932904 0.11337182  8581.767  8.581767</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:     265      0.2747756  5295.344 0.4924955 0.07038420  5327.786  5.327786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:     265      0.2747756 50759.484 4.7209051 0.67468054 51070.459 51.070459</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:     265      5.3114500 13634.775 0.2569690 0.02569690 13648.780 13.648780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:     265      0.2747756 12918.458 1.2014861 0.17170845 12997.602 12.997602</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:     265      5.3114500  7337.365 0.1382843 0.01382843  7344.901  7.344901</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                        ef_source ef_publishdate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                           &lt;char&gt;         &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:                               USEPA eGRID2022     01/30/2024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:                               USEPA eGRID2022     01/30/2024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:                               USEPA eGRID2022     01/30/2024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:                               USEPA eGRID2022     01/30/2024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
