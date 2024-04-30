@@ -2,8 +2,9 @@ pandoc: 3.1.11
 pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
+  Emission-Factor-Library: Emission-Factor-Library.html
   ghgtools: ghgtools.html
-last_built: 2024-04-24T22:46Z
+last_built: 2024-04-30T20:07Z
 urls:
   reference: https://brandon-mcn.github.io/ghgtools/reference
   article: https://brandon-mcn.github.io/ghgtools/articles
