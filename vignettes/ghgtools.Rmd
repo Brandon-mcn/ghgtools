@@ -21,13 +21,13 @@ knitr::opts_chunk$set(
 
 The GHG inventory of any entity can be summarized as follows: _Assets_, such as buildings, vehicles, and equipment, engage in _Activities_, such as electricity consumption, travel, or purchasing, which each have a specific _Emission Factor_ that tells us the rate at which that activity generates GHG emissions. These three variables - assets, actives, and emission factors - compose the underlying calculation methodology. ghgtools uses a set of standardized data templates to match each record of activity data to an emission factor using information about your assets. Our methodology is built on the best practices set forth by the [GHG Protocol Corporate Standard](https://ghgprotocol.org/corporate-standard).
 
-The following data sets are required to use ghgtools and calculate GHG emissions. When you library(ghgtools), these data sets are made available.
+The following data sets are required to use ghgtools and calculate GHG emissions. When you library(ghgtools), these data sets are available.
 
-**Emission Factor Library** - [EFLibrary](r link("EFLibrary")) - The catalog of emission factors for a variety of activities. Our team consolidates emission factors from a collection of reputable sources, such as the EPA's [Emission Factor Hub](https://www.epa.gov/climateleadership/ghg-emission-factors-hub). Unless you want to add your own custom emission factors (which you certainly can, these tools are open source after all!), you don't need to worry about the emission factor library. It is pre-populated and ready to go. 
+**Emission Factor Library** - [EFLibrary](https://ghgtools.io/reference/EFLibrary.html) - The catalog of emission factors for a variety of activities. Our team consolidates emission factors from a collection of reputable sources, such as the EPA's [Emission Factor Hub](https://www.epa.gov/climateleadership/ghg-emission-factors-hub). Unless you want to add your own custom emission factors (which you certainly can, these tools are open source after all!), you don't need to worry about the emission factor library. It is pre-populated and ready to go. 
 
-**Asset Portfolio** - [AssetPortfolio](r link("AssetPortfolio")) - The list of all your assets. This likely includes buildings and vehicles. You may also designate an _Enterprise_ asset to calculate scope 3 emissions for purchasing, business travel, and other supply chain related activities. 
+**Asset Portfolio** - [AssetPortfolio](https://ghgtools.io/reference/AssetPortfolio.html) - The list of all your assets. This likely includes buildings and vehicles. You may also designate an _Enterprise_ asset to calculate scope 3 emissions for purchasing, business travel, and other supply chain related activities. 
 
-**Activity Data** - [ActivityData](r link("ActivityData")) - The record of energy consumption and other GHG-producing activities across each of your assets. 
+**Activity Data** - [ActivityData](https://ghgtools.io/reference/ActivityData.html) - The record of energy consumption and other GHG-producing activities across each of your assets. 
 
 ## How it Works
 

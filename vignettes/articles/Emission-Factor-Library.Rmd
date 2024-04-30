@@ -1,0 +1,46 @@
+---
+title: "Emission Factor Library"
+output: rmarkdown::html_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+<br>
+The Emission Factor Library is a central piece of ghgtools. The following document details the coverage of the emission factor library and provides guidance on how to organize your activity data accordingly. 
+
+```{r setup, include = FALSE}
+library(ghgtools)
+library(knitr)
+EFL <- EFLibrary
+```
+
+### Years Covered
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+Year <- EFL[, "ef_activeyear"]
+year_list <- unique(Year)
+kable(year_list, align = "l")
+```
+
+### Scope 1 & 2 Service Types Covered
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+S12EFL <- EFL[EFL$emission_scope != "Scope 3"]
+ST <- S12EFL[, c("service_type", "emission_category")]
+ST_list <- unique(ST)
+kable(ST_list)
+```
+
+### Scope 3 Categories Covered
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+S3EFL <- EFL[EFL$emission_scope == "Scope 3"]
+S3 <- S3EFL[, "emission_category"]
+S3_list <- unique(S3)
+kable(S3_list, align = "l")
+```
