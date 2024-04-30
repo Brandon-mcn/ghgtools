@@ -119,7 +119,7 @@ supply chain related activities.</p>
 across each of your assets.</p>
 </div>
 <div class="section level2">
-<h2 id="how-it-works">How it Works<a class="anchor" aria-label="anchor" href="#how-it-works"></a>
+<h2 id="data-and-templates">Data and Templates<a class="anchor" aria-label="anchor" href="#data-and-templates"></a>
 </h2>
 <p>First, we need to load ghgtools</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -130,7 +130,7 @@ produced by the activity. For example, burning natural gas will generate
 CO2, CH4 and N2O. <code>EFLibrary</code> is loaded when you library
 ghgtools. An example of the emission factors for <em>Aviation
 Gasoline</em> is provided below. Check out the <a href="https://ghgtools.io/articles/Emission-Factor-Library.html" class="external-link">Emission
-Factor Library</a> article online for more guidance and information.</p>
+Factor Library</a> article for more guidance and information.</p>
 <p><br></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:100%; overflow-x: scroll; width:100%; ">
 <table class="table  lightable-material lightable-striped lightable-hover" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
@@ -359,7 +359,7 @@ library to an excel file in your working directory. <br></p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/create_templates.html">create_templates</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Success! Check your directory for ActivityData.csv, AssetPortfolio.csv, and EFLibrary.csv"</span></span></code></pre></div>
 <p>See below for some example data from the templates.</p>
-<p><br><strong>Activity Data Template</strong> - <em>See</em> <a href="https://ghgtools.io/reference/ActivityData.html" class="external-link"><em>ActivityData</em></a>
+<p><strong>Activity Data Template</strong> - <em>See</em> <a href="https://ghgtools.io/reference/ActivityData.html" class="external-link"><em>ActivityData</em></a>
 <em>reference documentation for more information about the activity data
 template.</em> <br></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:100%; overflow-x: scroll; width:100%; ">
@@ -706,8 +706,12 @@ Office
 </tbody>
 </table>
 </div>
-<p><br> The core function of ghgtools is <code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code>.
-This function requires activity data, an asset portoflio, and a GWP
+</div>
+<div class="section level2">
+<h2 id="running-ghg_inventory">Running ghg_inventory()<a class="anchor" aria-label="anchor" href="#running-ghg_inventory"></a>
+</h2>
+<p>The core function of ghgtools is <code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code>. This
+function requires activity data, an asset portoflio, and a GWP
 selection.You may choose to provide an emission factor library,
 otherwise <code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code> will default to the internal
 emission factor library <code>EFLibrary</code></p>
@@ -5228,13 +5232,22 @@ EPA CCCL Emission Factors for GHG Inventories
 </table>
 </div>
 <p><br><code><a href="../reference/ghg_inventory.html">ghg_inventory()</a></code> has merged our AssetPortoflio,
-ActivityData, and EFL to generate a GHG emissions inventory report.
-Let’s take a quick look at how we might visualize this data. <br></p>
+ActivityData, and EFL to generate a GHG emissions inventory report. This
+data can now be used for a variety of climate disclosure needs.</p>
+</div>
+<div class="section level2">
+<h2 id="visualize-your-ghg-inventory">Visualize your GHG Inventory<a class="anchor" aria-label="anchor" href="#visualize-your-ghg-inventory"></a>
+</h2>
+<p>Using <code>ggplot2()</code> we can begin to visualize the inventory
+created by ghgtools.<br><br></p>
 <p><img src="ghgtools_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
 <p><br></p>
 <p><img src="ghgtools_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
 <p><br></p>
 <p><img src="ghgtools_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+<p><br></p>
+<p>Visit <a href="ghgtools.io">ghgtools.io</a> for updates and more
+information!</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
