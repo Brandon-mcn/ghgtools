@@ -7,22 +7,19 @@
 \format{
 \subsection{\code{eGRIDlookup}}{
 
-A data frame with 7,240 rows and 60 columns:
+A data frame with 3 rows and 41536 columns:
 \describe{
-\item{country}{Country name}
-\item{iso2, iso3}{2 & 3 letter ISO country codes}
-\item{year}{Year}
+\item{zip}{zip code}
+\item{service_type}{The service type, i.e. electricity}
+\item{subregion}{eGRID subregion}
 ...
 }
 }
-}
-\source{
-<ghgtools.io>
 }
 \usage{
 eGRIDlookup
 }
 \description{
-Details...
+A table from eGRID which associated zip codes with subregion
 }
 \keyword{datasets}

@@ -37,4 +37,7 @@ EFLibrary
 \description{
 Emission factors are organized as a single record of data for each relevant greenhouse gas.
 }
+\seealso{
+\href{https://ghgtools.io/articles/Emission-Factor-Library.html}{Emission Factor Library}
+}
 \keyword{datasets}

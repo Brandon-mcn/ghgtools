@@ -29,7 +29,7 @@ The following data sets are required to use ghgtools and calculate GHG emissions
 
 **Activity Data** - [ActivityData](https://ghgtools.io/reference/ActivityData.html) - The record of energy consumption and other GHG-producing activities across each of your assets. 
 
-## How it Works
+## Data and Templates
 
 First, we need to load ghgtools
 
@@ -37,7 +37,7 @@ First, we need to load ghgtools
 library(ghgtools)
 ```
 
-The emission factor library, `EFLibrary`, is loaded from the ghgtools package. There is a row of data for each greenhouse gas produced by the activity. For example, burning natural gas will generate CO2, CH4 and N2O. `EFLibrary` is loaded when you library ghgtools. An example of the emission factors for _Aviation Gasoline_ is provided below. Check out the [Emission Factor Library](https://ghgtools.io/articles/Emission-Factor-Library.html) article online for more guidance and information. 
+The emission factor library, `EFLibrary`, is loaded from the ghgtools package. There is a row of data for each greenhouse gas produced by the activity. For example, burning natural gas will generate CO2, CH4 and N2O. `EFLibrary` is loaded when you library ghgtools. An example of the emission factors for _Aviation Gasoline_ is provided below. Check out the [Emission Factor Library](https://ghgtools.io/articles/Emission-Factor-Library.html) article for more guidance and information. 
 
 <br>
 
@@ -59,7 +59,6 @@ create_templates()
 
 See below for some example data from the templates. 
 
-<br>
 **Activity Data Template** - _See_ [_ActivityData_](https://ghgtools.io/reference/ActivityData.html) _reference documentation for more information about the activity data template._
 <br>
 
@@ -81,7 +80,8 @@ kbl(head(AssetPortfolio, 3)) %>%
   scroll_box(width = "100%", height = "100%")
 ```
 
-<br>
+## Running ghg_inventory()
+
 The core function of ghgtools is `ghg_inventory()`. This function requires activity data, an asset portoflio, and a GWP selection.You may choose to provide an emission factor library, otherwise `ghg_inventory()` will default to the internal emission factor library `EFLibrary`
 
 - **Activity Data** must be a data frame following the structure of the activity data template. 
@@ -115,7 +115,11 @@ kbl(head(GHG_rawdata, 100)) %>%
 ```
 
 <br>
-`ghg_inventory()` has merged our AssetPortoflio, ActivityData, and EFL to generate a GHG emissions inventory report. Let's take a quick look at how we might visualize this data. 
+`ghg_inventory()` has merged our AssetPortoflio, ActivityData, and EFL to generate a GHG emissions inventory report. This data can now be used for a variety of climate disclosure needs. 
+
+## Visualize your GHG Inventory
+
+Using `ggplot2()` we can begin to visualize the inventory created by ghgtools.  
 <br>
 
 ```{r, echo=FALSE, message = FALSE, warning=FALSE, fig.width=6, fig.height=4}
@@ -168,3 +172,6 @@ state_data_chart <- ggplot(state_data, aes(x = state, y = EmissionTotal)) +
 print(state_data_chart)
 ```
 
+<br>
+
+Visit [ghgtools.io](ghgtools.io) for updates and more information!
