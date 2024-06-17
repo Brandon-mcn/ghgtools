@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   Emission-Factor-Library: Emission-Factor-Library.html
   ghgtools: ghgtools.html
-last_built: 2024-04-30T21:32Z
+last_built: 2024-06-17T16:54Z
 urls:
   reference: https://brandon-mcn.github.io/ghgtools/reference
   article: https://brandon-mcn.github.io/ghgtools/articles
