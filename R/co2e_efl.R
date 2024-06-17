@@ -20,7 +20,7 @@ co2e_efl <- function(GWP, EFL = EFLibrary){
   EFL1 <- merge.data.table(EFL, GWPs, sort = FALSE, all.x = TRUE)
   EFL1[, gwps_ar := GWP]
   EFL1[, kgco2e_perunit := ghg_perunit*gwp]
-  EFL1[, ef_publishdate := format(ef_publishdate, "%m/%d/%Y")]
+  EFL1[, ef_publishdate := as.Date(ef_publishdate, format = "%Y-%m-%d")]
   EFL1[, ghg := ifelse(ghg %in% c("CO2", "CH4", "N2O"), ghg, "other_ghgs")]
   EFL_CO2e <- dcast(EFL1, ef_source +
                       ef_publishdate +
