@@ -81,6 +81,10 @@ ghg_inventory <- function(AD, AP, GWP, EFL = EFLibrary){
   AD1 <- data.table(merge.data.table(AD1, eGRIDlookup, sort = FALSE, all.x = TRUE))
   AD1[is.na(AD1)] <- ""
 
+  # Split AD1 into one table for Vehicles and one table for all other asset types
+  # AD_vehicles <- AD1[asset_type == "Vehicle"]
+  # AD_allelse <- AD1[asset_type != "Vehicle"]
+
   # Merge the emission factor library with activity data
   GHGrawdata <- data.table(merge.data.table(AD1, EFL_CO2e, by = c("year",
                                                                   "service_type",

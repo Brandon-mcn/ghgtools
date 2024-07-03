@@ -26,12 +26,16 @@ Enterprise,,,,,2023,,Purchased Goods and Services,Administrative and Support and
 Enterprise,,,,,2023,,Purchased Goods and Services,Administrative and Support and Waste Mgmt. Services,Security Systems Services (except Locksmiths),USD,15929.275
 Enterprise,,,,,2023,,Purchased Goods and Services,Educational Services,Professional and Management Development Training,USD,321181.5
 Enterprise,,,,,2023,,Purchased Goods and Services,Information,Wireless Telecommunications Carriers (except Satellite),USD,1795761.13
-Enterprise,,,,,2023,,Business Travel,Ground Travel,Passenger Car,vehicle-mile,15000
-Enterprise,,,,,2023,,Business Travel,Ground Travel,Light-Duty Truck,vehicle-mile,500
-Enterprise,,,,,2023,,Business Travel,Rail Travel,Intercity Rail - National Average,passenger-mile,37000
-Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Short Haul,passenger-mile,60000
-Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Medium Haul,passenger-mile,110000
-Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Long Haul,passenger-mile,73000
-Enterprise,,,,,2023,,Employee Commuting,Ground Travel,Passenger Car,vehicle-mile,70000
-Enterprise,,,,,2023,,Employee Commuting,Rail Travel,Transit Rail,passenger-mile,84000
-Enterprise,,,,,2023,,Employee Commuting,Ground Travel,Bus,passenger-mile,3000
+Enterprise,,,,,2023,,Business Travel,Ground Travel,Passenger Car,vehicle-miles,15000
+Enterprise,,,,,2023,,Business Travel,Ground Travel,Light-Duty Truck,vehicle-miles,500
+Enterprise,,,,,2023,,Business Travel,Rail Travel,Intercity Rail - National Average,passenger-miles,37000
+Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Short Haul,passenger-miles,60000
+Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Medium Haul,passenger-miles,110000
+Enterprise,,,,,2023,,Business Travel,Air Travel,Air Travel - Long Haul,passenger-miles,73000
+Enterprise,,,,,2023,,Employee Commuting,Ground Travel,Passenger Car,vehicle-miles,70000
+Enterprise,,,,,2023,,Employee Commuting,Rail Travel,Transit Rail,passenger-miles,84000
+Enterprise,,,,,2023,,Employee Commuting,Ground Travel,Bus,passenger-miles,3000
+V0001,,,,,2023,,Motor Gasoline,,,gallons,500
+V0002,,,,,2023,,Motor Gasoline,,,gallons,600
+V0002,,,,,2023,,Motor Gasoline,,,vehicle-miles,15000
+V0003,,,,,2023,,Diesel Fuel,,,vehicle-miles,20000
