@@ -20,3 +20,4 @@ Suggests:
     ggplot2
 VignetteBuilder: knitr
 URL: https://brandon-mcn.github.io/ghgtools/
+Config/Needs/website: rmarkdown
