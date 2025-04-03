@@ -1,57 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/404.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/articles/Emission-Factor-Library.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/articles/ghgtools.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/index.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/ActivityData.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/AssetPortfolio.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/EFLibrary.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/GWPs.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/co2e_efl.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/create_templates.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/eGRIDlookup.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/ghg_inventory.html</loc>
-  </url>
-  <url>
-    <loc>https://brandon-mcn.github.io/ghgtools/reference/index.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://brandon-mcn.github.io/ghgtools/404.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/LICENSE-text.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/LICENSE.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/articles/Emission-Factor-Library.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/articles/GHG-measure-MCS.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/articles/ghgtools.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/articles/index.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/authors.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/index.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/news/index.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/ActivityData.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/AssetPortfolio.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/EFLibrary.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/GWPs.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/co2e_efl.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/create_templates.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/eGRIDlookup.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/ghg_inventory.html</loc></url>
+<url><loc>https://brandon-mcn.github.io/ghgtools/reference/index.html</loc></url>
 </urlset>
+

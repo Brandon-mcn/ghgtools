@@ -1,11 +1,11 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  Emission-Factor-Library: Emission-Factor-Library.html
+  articles/Emission-Factor-Library: Emission-Factor-Library.html
+  articles/GHG-measure-MCS: GHG-measure-MCS.html
   ghgtools: ghgtools.html
-last_built: 2024-07-03T23:42Z
+last_built: 2025-04-03T19:22Z
 urls:
   reference: https://brandon-mcn.github.io/ghgtools/reference
   article: https://brandon-mcn.github.io/ghgtools/articles
-
