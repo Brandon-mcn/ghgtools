@@ -78,7 +78,8 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">AR5_Inventory</span> <span class="op">&lt;-</span> <span class="fu">ghg_inventory</span><span class="op">(</span><span class="va">ActivityData</span>, <span class="va">AssetPortfolio</span>, <span class="st">"AR5"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">AR5_Inventory</span> <span class="op">&lt;-</span> <span class="fu">ghg_inventory</span><span class="op">(</span><span class="va">ActivityData</span>, <span class="va">AssetPortfolio</span>, <span class="st">"ar5"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> EFL conversion successful</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">AR5_Inventory</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    asset_id asset_name asset_type asset_subtype asset_description address</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      &lt;char&gt;     &lt;char&gt;     &lt;char&gt;        &lt;char&gt;            &lt;char&gt;  &lt;char&gt;</span>
@@ -88,62 +89,62 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4:    B1458              Building        Office                          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5:    B1564              Building        Office                          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6:    B1564              Building        Office                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           city      state    zip       country     region subregion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         &lt;char&gt;     &lt;char&gt; &lt;char&gt;        &lt;char&gt;     &lt;char&gt;    &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  Bellingham Washington  98226 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  Bellingham Washington  98225 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:  Bellingham Washington  98225 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4:  Bellingham Washington  98225 United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5: Woodinville Washington  98072 United States West Coast      NWPP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6: Woodinville Washington  98072 United States West Coast          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    business_unit year_built   sqft service_type   unit supplier account_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           &lt;char&gt;     &lt;char&gt; &lt;char&gt;       &lt;char&gt; &lt;char&gt;   &lt;char&gt;     &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:    Operations       1993    342  Electricity    kWh                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:    Operations       2005   3280  Electricity    kWh                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:    Operations       2003  20142  Electricity    kWh                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4:    Operations       2003  20142  Natural Gas therms                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5:    Operations       1990   3636  Electricity    kWh                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6:    Operations       1990   3636  Natural Gas therms                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    meter_number   date  year   cost      usage emission_category</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          &lt;char&gt; &lt;char&gt; &lt;int&gt; &lt;char&gt;      &lt;num&gt;            &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:                      2023         31231.907   Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:                      2023         19389.588   Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:                      2023        185862.407   Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4:                      2023          2569.690        Stationary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5:                      2023         47302.603   Indirect Energy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6:                      2023          1382.843        Stationary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    service_subcategory1 service_subcategory2 emission_scope co2_kgperunit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  &lt;char&gt;               &lt;char&gt;         &lt;char&gt;         &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:                                                  Scope 2     0.2731025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:                                                  Scope 2     0.2731025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:                                                  Scope 2     0.2731025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4:                                                  Scope 1     5.3060000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5:                                                  Scope 2     0.2731025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6:                                                  Scope 1     5.3060000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ch4_kgperunit n2o_kgperunit otherghgs_kgco2eperunit gwps_ar co2_gwp ch4_gwp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            &lt;num&gt;         &lt;num&gt;                   &lt;num&gt;  &lt;char&gt;   &lt;num&gt;   &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:      2.54e-05      3.63e-06                       0     AR5       1      28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:      2.54e-05      3.63e-06                       0     AR5       1      28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:      2.54e-05      3.63e-06                       0     AR5       1      28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4:      1.00e-04      1.00e-05                       0     AR5       1      28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5:      2.54e-05      3.63e-06                       0     AR5       1      28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6:      1.00e-04      1.00e-05                       0     AR5       1      28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    n2o_gwp kgco2e_perunit    kg_co2    kg_ch4     kg_n2o   kg_co2e   mt_co2e</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      &lt;num&gt;          &lt;num&gt;     &lt;num&gt;     &lt;num&gt;      &lt;num&gt;     &lt;num&gt;     &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     265      0.2747756  8529.511 0.7932904 0.11337182  8581.767  8.581767</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:     265      0.2747756  5295.344 0.4924955 0.07038420  5327.786  5.327786</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:     265      0.2747756 50759.484 4.7209051 0.67468054 51070.459 51.070459</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4:     265      5.3114500 13634.775 0.2569690 0.02569690 13648.780 13.648780</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5:     265      0.2747756 12918.458 1.2014861 0.17170845 12997.602 12.997602</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6:     265      5.3114500  7337.365 0.1382843 0.01382843  7344.901  7.344901</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           city      state    zip country     region subregion business_unit</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         &lt;char&gt;     &lt;char&gt; &lt;char&gt;  &lt;char&gt;     &lt;char&gt;    &lt;char&gt;        &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  Bellingham Washington  98226     USA West Coast      NWPP    Operations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  Bellingham Washington  98225     USA West Coast      NWPP    Operations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:  Bellingham Washington  98225     USA West Coast      NWPP    Operations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:  Bellingham Washington  98225     USA West Coast              Operations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: Woodinville Washington  98072     USA West Coast      NWPP    Operations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: Woodinville Washington  98072     USA West Coast              Operations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    year_built   sqft service_type   unit supplier account_id meter_number</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;char&gt; &lt;char&gt;       &lt;char&gt; &lt;char&gt;   &lt;char&gt;     &lt;char&gt;       &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:       1993    342  electricity    kWh                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:       2005   3280  electricity    kWh                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:       2003  20142  electricity    kWh                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:       2003  20142  natural gas  therm                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:       1990   3636  electricity    kWh                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:       1990   3636  natural gas  therm                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      date  year   cost      usage emission_category service_subcategory1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;char&gt; &lt;num&gt; &lt;char&gt;      &lt;num&gt;            &lt;char&gt;               &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:         2023         31231.907   indirect energy                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:         2023         19389.588   indirect energy                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:         2023        185862.407   indirect energy                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:         2023          2569.690        stationary                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:         2023         47302.603   indirect energy                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:         2023          1382.843        stationary                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    service_subcategory2 emission_scope co2_kgperunit ch4_kgperunit</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  &lt;char&gt;         &lt;char&gt;         &lt;num&gt;         &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:                             scope 2     0.2731025  2.540117e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:                             scope 2     0.2731025  2.540117e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:                             scope 2     0.2731025  2.540117e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:                             scope 1     5.3060000  1.000000e-04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:                             scope 2     0.2731025  2.540117e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:                             scope 1     5.3060000  1.000000e-04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    n2o_kgperunit otherghgs_kgco2eperunit gwps_ar co2_gwp ch4_gwp n2o_gwp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            &lt;num&gt;                   &lt;num&gt;  &lt;char&gt;   &lt;num&gt;   &lt;num&gt;   &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  3.628738e-06                       0     ar5       1      28     265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  3.628738e-06                       0     ar5       1      28     265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:  3.628738e-06                       0     ar5       1      28     265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:  1.000000e-05                       0     ar5       1      28     265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:  3.628738e-06                       0     ar5       1      28     265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:  1.000000e-05                       0     ar5       1      28     265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    kgco2e_perunit    kg_co2    kg_ch4     kg_n2o   kg_co2e   mt_co2e</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             &lt;num&gt;     &lt;num&gt;     &lt;num&gt;      &lt;num&gt;     &lt;num&gt;     &lt;num&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:      0.2747753  8529.511 0.7933269 0.11333242  8581.757  8.581757</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:      0.2747753  5295.344 0.4925182 0.07035974  5327.780  5.327780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:      0.2747753 50759.484 4.7211223 0.67444604 51070.403 51.070403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:      5.3114500 13634.775 0.2569690 0.02569690 13648.780 13.648780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:      0.2747753 12918.458 1.2015414 0.17164877 12997.588 12.997588</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:      5.3114500  7337.365 0.1382843 0.01382843  7344.901  7.344901</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                        ef_source ef_publishdate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                           &lt;char&gt;         &lt;char&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5:                               USEPA eGRID2022     01/30/2024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6: EPA CCCL Emission Factors for GHG Inventories     09/12/2023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                           &lt;char&gt;         &lt;Date&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:                                     eGRID2022     2024-01-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:                                     eGRID2022     2024-01-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:                                     eGRID2022     2024-01-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: EPA CCCL Emission Factors for GHG Inventories     2024-06-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:                                     eGRID2022     2024-01-30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: EPA CCCL Emission Factors for GHG Inventories     2024-06-05</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
