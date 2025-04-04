@@ -7,13 +7,61 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
-
-```{r setup}
+if (!require("ghgtools")) install.packages("ghgtools")
 library(ghgtools)
+if (!require("dplyr")) install.packages("dplyr")
+library(dplyr)
+if (!require("tidyr")) install.packages("tidyr")
+library(tidyr)
+if (!require("readxl")) install.packages("readxl")
+library(readxl)
+if (!require("writexl")) install.packages("writexl")
+library(writexl)
+if (!require("ggplot2")) install.packages("ggplot2")
+library(ggplot2)
+if (!require("scales")) install.packages("scales")
+library(scales)
+if (!require("data.table")) install.packages("data.table")
+library(data.table)
+if (!require("gridExtra")) install.packages("gridExtra")
+library(gridExtra)
+if (!require("patchwork")) install.packages("patchwork")
+library(patchwork)
 ```
 <br>
 
 ### This is a test 
 
 a test I say 
+
+Define the following global variables to be called by parameter functions
+
+```{r}
+run_count <- 10000
+scenario_start <- 2025
+intv_years <- 10 # The number of years the intervention will be implemented
+intv_lifetime <- 15 # The number of years the intervention generates benefits, generally the expected lifetime of equipment
+scenario_end  <- scenario_start + intv_years + intv_lifetime - 2
+scenario_years <- scenario_end - scenario_start + 1
+output_headers <- scenario_start:scenario_end
+```
+
+An emission factor library is generated
+
+```{r, message=FALSE, warning=FALSE}
+
+my_efl <- co2e_efl("ar6")
+
+print(head(my_efl))
+
+```
+
+Let's take a look at a kable table
+<br>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(kableExtra)
+kbl(head(my_efl, 100)) %>%
+  kable_material(c("striped", "hover")) %>%
+  scroll_box(width = "100%", height = "400px")
+```

@@ -32,7 +32,7 @@ kable(year_list, align = "l")
 ### Scope 1 & 2 Service Types Covered
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-S12EFL <- EFL[EFL$emission_scope != "Scope 3"]
+S12EFL <- subset(EFL, emission_scope != "scope 3")
 ST <- S12EFL[, c("service_type", "emission_category")]
 ST_list <- unique(ST)
 kable(ST_list)
@@ -42,7 +42,7 @@ kable(ST_list)
 ### Scope 3 Categories Covered
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-S3EFL <- EFL[EFL$emission_scope == "Scope 3"]
+S3EFL <- S12EFL <- subset(EFL, emission_scope == "scope 3")
 S3 <- S3EFL[, "emission_category"]
 S3_list <- unique(S3)
 kable(S3_list, align = "l")

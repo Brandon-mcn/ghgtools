@@ -10,19 +10,20 @@
 #' @export
 co2e_efl <- function(GWP, EFL = EFLibrary){
 
-  gwp_key <- c("ghg",GWP)
-  GWPs <- GWPs[, gwp_key, with = FALSE]
+  gwp_key <- c("ghg", GWP)
+  GWPs <- GWPs[, gwp_key]
   colnames(GWPs)[2] <- "gwp"
-  co2gwp <- GWPs[GWPs$ghg == "CO2", gwp]
-  ch4gwp <- GWPs[GWPs$ghg == "CH4", gwp]
-  n2ogwp <- GWPs[GWPs$ghg == "N2O", gwp]
+  co2gwp <- GWPs$gwp[GWPs$ghg == "co2"]
+  ch4gwp <- GWPs$gwp[GWPs$ghg == "ch4"]
+  n2ogwp <- GWPs$gwp[GWPs$ghg == "n2o"]
 
   EFL1 <- merge.data.table(EFL, GWPs, sort = FALSE, all.x = TRUE)
+  EFL1 <- as.data.table(EFL1)
   EFL1[, gwps_ar := GWP]
-  EFL1[, kgco2e_perunit := ghg_perunit*gwp]
+  EFL1[, kgco2e_perunit := kg_ghg_perunit*gwp]
   EFL1[, ef_publishdate := as.Date(ef_publishdate, format = "%Y-%m-%d")]
-  EFL1[, ghg := ifelse(ghg %in% c("CO2", "CH4", "N2O"), ghg, "other_ghgs")]
-  EFL_CO2e <- dcast(EFL1, ef_source +
+  EFL1[, ghg := ifelse(ghg %in% c("co2", "ch4", "n2o"), ghg, "other_ghgs")]
+  EFL_co2e <- dcast(EFL1, ef_source +
                       ef_publishdate +
                       ef_activeyear +
                       service_type +
@@ -30,29 +31,33 @@ co2e_efl <- function(GWP, EFL = EFLibrary){
                       emission_category +
                       service_subcategory1 +
                       service_subcategory2 +
+                      supplier +
                       emission_scope +
                       country +
                       subregion +
                       gwps_ar ~ ghg,
                     value.var = "kgco2e_perunit",
                     fun.aggregate = sum)
-  EFL_CO2e[, kgco2e_perunit := CO2 + CH4 + N2O + other_ghgs]
-  EFL_CO2e[, co2_gwp := co2gwp]
-  EFL_CO2e[, ch4_gwp := ch4gwp]
-  EFL_CO2e[, n2o_gwp := n2ogwp]
-  EFL_CO2e[, CO2 := CO2 / co2gwp]
-  EFL_CO2e[, CH4 := CH4 / ch4gwp]
-  EFL_CO2e[, N2O := N2O / n2ogwp]
-  setnames(EFL_CO2e, "CO2", "co2_kgperunit")
-  setnames(EFL_CO2e, "CH4", "ch4_kgperunit")
-  setnames(EFL_CO2e, "N2O", "n2o_kgperunit")
-  setnames(EFL_CO2e, "other_ghgs", "otherghgs_kgco2eperunit")
-  setnames(EFL_CO2e, "ef_activeyear", "year")
-  setcolorder(EFL_CO2e, c("ef_source", "ef_publishdate", "year", "service_type", "unit",
+  EFL_co2e[, kgco2e_perunit := co2 + ch4 + n2o + other_ghgs]
+  EFL_co2e[, co2_gwp := co2gwp]
+  EFL_co2e[, ch4_gwp := ch4gwp]
+  EFL_co2e[, n2o_gwp := n2ogwp]
+  EFL_co2e[, co2 := co2 / co2gwp]
+  EFL_co2e[, ch4 := ch4 / ch4gwp]
+  EFL_co2e[, n2o := n2o / n2ogwp]
+  setnames(EFL_co2e, "co2", "co2_kgperunit")
+  setnames(EFL_co2e, "ch4", "ch4_kgperunit")
+  setnames(EFL_co2e, "n2o", "n2o_kgperunit")
+  setnames(EFL_co2e, "other_ghgs", "otherghgs_kgco2eperunit")
+  setnames(EFL_co2e, "ef_activeyear", "year")
+  EFL_co2e[, year := as.numeric(year)]
+  EFL_co2e[, ef_publishdate := as.Date(ef_publishdate)]
+  EFL_co2e[is.na(EFL_co2e)] <- ""
+  setcolorder(EFL_co2e, c("ef_source", "ef_publishdate", "year", "service_type", "unit",
                           "emission_category", "service_subcategory1", "service_subcategory2",
                           "emission_scope", "country", "subregion", "co2_kgperunit", "ch4_kgperunit",
                           "n2o_kgperunit", "otherghgs_kgco2eperunit", "gwps_ar", "co2_gwp",
                           "ch4_gwp", "n2o_gwp", "kgco2e_perunit"))
-  return(EFL_CO2e)
+  return(EFL_co2e)
 
 }

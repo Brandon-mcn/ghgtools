@@ -22,7 +22,7 @@ The GHG raw data
 Calculates a GHG inventory using input data from EF_Library, Asset_Portfolio, and Activity_Data variables in the global environment.
 }
 \examples{
-AR5_Inventory <- ghg_inventory(ActivityData, AssetPortfolio, "AR5")
+AR5_Inventory <- ghg_inventory(ActivityData, AssetPortfolio, "ar5")
 head(AR5_Inventory)
 
 }

@@ -104,7 +104,7 @@ My_EFLibrary <- fread("EFLibrary.csv")
 With the variables created above, you can run `ghg_inventory()`.
 
 ```{r, include=TRUE, message=FALSE, warning=FALSE}
-GHG_rawdata <- ghg_inventory(My_ActivityData, My_AssetPortfolio, "AR5", My_EFLibrary)
+GHG_rawdata <- ghg_inventory(My_ActivityData, My_AssetPortfolio, "ar5", My_EFLibrary)
 ```
 
 Let's take a look at the ghg inventory that was calculated:
