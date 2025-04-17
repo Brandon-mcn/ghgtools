@@ -88,14 +88,14 @@ functions</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">my_efl</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Key: &lt;ef_source&gt;</span></span>
-<span><span class="co">#&gt;                                        ef_source ef_publishdate  year</span></span>
-<span><span class="co">#&gt;                                           &lt;char&gt;         &lt;Date&gt; &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023</span></span>
-<span><span class="co">#&gt; 2: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023</span></span>
-<span><span class="co">#&gt; 3: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023</span></span>
-<span><span class="co">#&gt; 4: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023</span></span>
-<span><span class="co">#&gt; 5: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023</span></span>
-<span><span class="co">#&gt; 6: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023</span></span>
+<span><span class="co">#&gt;                                        ef_source ef_publishdate  year supplier</span></span>
+<span><span class="co">#&gt;                                           &lt;char&gt;         &lt;Date&gt; &lt;num&gt;   &lt;char&gt;</span></span>
+<span><span class="co">#&gt; 1: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023         </span></span>
+<span><span class="co">#&gt; 2: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023         </span></span>
+<span><span class="co">#&gt; 3: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023         </span></span>
+<span><span class="co">#&gt; 4: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023         </span></span>
+<span><span class="co">#&gt; 5: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023         </span></span>
+<span><span class="co">#&gt; 6: EPA CCCL Emission Factors for GHG Inventories     2024-06-05  2023         </span></span>
 <span><span class="co">#&gt;               service_type      unit emission_category service_subcategory1</span></span>
 <span><span class="co">#&gt;                     &lt;char&gt;    &lt;char&gt;            &lt;char&gt;               &lt;char&gt;</span></span>
 <span><span class="co">#&gt; 1: agricultural byproducts short ton        stationary                     </span></span>
@@ -120,13 +120,13 @@ functions</p>
 <span><span class="co">#&gt; 4:       0.00036       0.00007                       0     ar6       1    29.8</span></span>
 <span><span class="co">#&gt; 5:       0.00036       0.00007                       0     ar6       1    29.8</span></span>
 <span><span class="co">#&gt; 6:       0.00190       0.00042                       0     ar6       1    29.8</span></span>
-<span><span class="co">#&gt;    n2o_gwp kgco2e_perunit supplier</span></span>
-<span><span class="co">#&gt;      &lt;num&gt;          &lt;num&gt;   &lt;char&gt;</span></span>
-<span><span class="co">#&gt; 1:     273     992.422200         </span></span>
-<span><span class="co">#&gt; 2:     273    2621.144800         </span></span>
-<span><span class="co">#&gt; 3:     273      11.948576         </span></span>
-<span><span class="co">#&gt; 4:     273       8.339838         </span></span>
-<span><span class="co">#&gt; 5:     273       8.339838         </span></span>
+<span><span class="co">#&gt;    n2o_gwp kgco2e_perunit</span></span>
+<span><span class="co">#&gt;      &lt;num&gt;          &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1:     273     992.422200</span></span>
+<span><span class="co">#&gt; 2:     273    2621.144800</span></span>
+<span><span class="co">#&gt; 3:     273      11.948576</span></span>
+<span><span class="co">#&gt; 4:     273       8.339838</span></span>
+<span><span class="co">#&gt; 5:     273       8.339838</span></span>
 <span><span class="co">#&gt; 6:     273      95.671280</span></span></code></pre></div>
 <p>Let’s take a look at a kable table <br></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
@@ -140,6 +140,9 @@ ef_publishdate
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 year
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+supplier
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 service_type
@@ -192,9 +195,6 @@ n2o_gwp
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 kgco2e_perunit
 </th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-supplier
-</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -206,6 +206,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 agricultural byproducts
@@ -255,8 +257,6 @@ ar6
 <td style="text-align:right;">
 992.4222000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -267,6 +267,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 anthracite
@@ -316,8 +318,6 @@ ar6
 <td style="text-align:right;">
 2621.1448000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -328,6 +328,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 asphalt and road oil
@@ -377,8 +379,6 @@ ar6
 <td style="text-align:right;">
 11.9485760
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -389,6 +389,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 aviation gasoline
@@ -438,8 +440,6 @@ ar6
 <td style="text-align:right;">
 8.3398380
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -450,6 +450,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 aviation gasoline
@@ -499,8 +501,6 @@ ar6
 <td style="text-align:right;">
 8.3398380
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -511,6 +511,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 bagasse
@@ -560,8 +562,6 @@ ar6
 <td style="text-align:right;">
 95.6712800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -572,6 +572,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 bamboo
@@ -621,8 +623,6 @@ ar6
 <td style="text-align:right;">
 93.8712800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -633,6 +633,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 biodiesel (100%)
@@ -682,8 +684,6 @@ ar6
 <td style="text-align:right;">
 9.4569020
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -694,6 +694,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 biodiesel (100%)
@@ -743,8 +745,6 @@ ar6
 <td style="text-align:right;">
 9.4569020
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -755,6 +755,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 bituminous
@@ -804,8 +806,6 @@ ar6
 <td style="text-align:right;">
 2344.0852000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -816,6 +816,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 blast furnace gas
@@ -865,8 +867,6 @@ ar6
 <td style="text-align:right;">
 0.0252425
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -877,6 +877,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 business travel
@@ -927,8 +929,6 @@ ar6
 <td style="text-align:right;">
 0.4084680
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -939,6 +939,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 business travel
@@ -989,8 +991,6 @@ ar6
 <td style="text-align:right;">
 1.3704468
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1001,6 +1001,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 business travel
@@ -1051,8 +1053,6 @@ ar6
 <td style="text-align:right;">
 0.3080405
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1063,6 +1063,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 butane
@@ -1112,8 +1114,6 @@ ar6
 <td style="text-align:right;">
 6.6956180
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1124,6 +1124,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 butylene
@@ -1173,8 +1175,6 @@ ar6
 <td style="text-align:right;">
 7.2459160
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1185,6 +1185,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 coal coke
@@ -1234,8 +1236,6 @@ ar6
 <td style="text-align:right;">
 2838.0554000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1246,6 +1246,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 coke oven gas
@@ -1295,8 +1297,6 @@ ar6
 <td style="text-align:right;">
 0.0280850
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1307,6 +1307,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 compressed natural gas (cng)
@@ -1356,8 +1358,6 @@ ar6
 <td style="text-align:right;">
 0.0544400
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1368,6 +1368,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 crude oil
@@ -1417,8 +1419,6 @@ ar6
 <td style="text-align:right;">
 10.3240580
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1429,6 +1429,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 diesel fuel
@@ -1478,8 +1480,6 @@ ar6
 <td style="text-align:right;">
 10.2440580
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1490,6 +1490,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 distillate fuel oil no. 1
@@ -1539,8 +1541,6 @@ ar6
 <td style="text-align:right;">
 10.2143560
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1551,6 +1551,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 distillate fuel oil no. 2
@@ -1600,8 +1602,6 @@ ar6
 <td style="text-align:right;">
 10.2440580
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1612,6 +1612,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 distillate fuel oil no. 4
@@ -1661,8 +1663,6 @@ ar6
 <td style="text-align:right;">
 10.9976820
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1673,6 +1673,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 employee commuting
@@ -1723,8 +1725,6 @@ ar6
 <td style="text-align:right;">
 0.4084680
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1735,6 +1735,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 employee commuting
@@ -1785,8 +1787,6 @@ ar6
 <td style="text-align:right;">
 1.3704468
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1797,6 +1797,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 employee commuting
@@ -1847,8 +1849,6 @@ ar6
 <td style="text-align:right;">
 0.3080405
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1859,6 +1859,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 ethane
@@ -1908,8 +1910,6 @@ ar6
 <td style="text-align:right;">
 4.0668800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1920,6 +1920,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 ethanol (100%)
@@ -1969,8 +1971,6 @@ ar6
 <td style="text-align:right;">
 5.7554120
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1981,6 +1981,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 ethanol (100%)
@@ -2030,8 +2032,6 @@ ar6
 <td style="text-align:right;">
 5.7554120
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2042,6 +2042,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 ethylene
@@ -2091,8 +2093,6 @@ ar6
 <td style="text-align:right;">
 3.8432560
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2103,6 +2103,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 fuel gas
@@ -2152,8 +2154,6 @@ ar6
 <td style="text-align:right;">
 0.0822415
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2164,6 +2164,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 heavy gas oils
@@ -2213,8 +2215,6 @@ ar6
 <td style="text-align:right;">
 11.1276820
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2225,6 +2225,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 isobutane
@@ -2274,8 +2276,6 @@ ar6
 <td style="text-align:right;">
 6.4553200
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2286,6 +2286,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 isobutylene
@@ -2335,8 +2337,6 @@ ar6
 <td style="text-align:right;">
 7.1156180
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2347,6 +2347,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 kerosene
@@ -2396,8 +2398,6 @@ ar6
 <td style="text-align:right;">
 10.1840580
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2408,6 +2408,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 kerosene-type jet fuel
@@ -2457,8 +2459,6 @@ ar6
 <td style="text-align:right;">
 9.7840580
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2469,6 +2469,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 kerosene-type jet fuel
@@ -2518,8 +2520,6 @@ ar6
 <td style="text-align:right;">
 9.7840580
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2530,6 +2530,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 landfill gas
@@ -2579,8 +2581,6 @@ ar6
 <td style="text-align:right;">
 0.0253838
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2591,6 +2591,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 lignite
@@ -2640,8 +2642,6 @@ ar6
 <td style="text-align:right;">
 1399.9278000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2652,6 +2652,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 liquefied natural gas (lng)
@@ -2701,8 +2703,6 @@ ar6
 <td style="text-align:right;">
 4.5000000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2713,6 +2713,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 liquefied petroleum gases (lpg)
@@ -2762,8 +2764,6 @@ ar6
 <td style="text-align:right;">
 5.7047240
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2774,6 +2774,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 liquefied petroleum gases (lpg)
@@ -2823,8 +2825,6 @@ ar6
 <td style="text-align:right;">
 5.7047240
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2835,6 +2835,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 lubricants
@@ -2884,8 +2886,6 @@ ar6
 <td style="text-align:right;">
 10.7273840
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2896,6 +2896,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 mixed coal (commercial sector)
@@ -2945,8 +2947,6 @@ ar6
 <td style="text-align:right;">
 2032.2850000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -2957,6 +2957,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 mixed coal (electric power sector)
@@ -3006,8 +3008,6 @@ ar6
 <td style="text-align:right;">
 1900.2026000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3018,6 +3018,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 mixed coal (industrial coking)
@@ -3067,8 +3069,6 @@ ar6
 <td style="text-align:right;">
 2488.0782000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3079,6 +3079,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 mixed coal (industrial sector)
@@ -3128,8 +3130,6 @@ ar6
 <td style="text-align:right;">
 2133.1588000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3140,6 +3140,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 motor gasoline
@@ -3189,8 +3191,6 @@ ar6
 <td style="text-align:right;">
 8.8131640
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3201,6 +3201,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 motor gasoline
@@ -3250,8 +3252,6 @@ ar6
 <td style="text-align:right;">
 8.8131640
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3262,6 +3262,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 municipal solid waste
@@ -3311,8 +3313,6 @@ ar6
 <td style="text-align:right;">
 922.9424000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3323,6 +3323,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 naphtha (&lt;401 deg f)
@@ -3372,8 +3374,6 @@ ar6
 <td style="text-align:right;">
 8.5331640
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3384,6 +3384,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 natural gas
@@ -3433,8 +3435,6 @@ ar6
 <td style="text-align:right;">
 53.1171000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3445,6 +3445,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 natural gas
@@ -3494,8 +3496,6 @@ ar6
 <td style="text-align:right;">
 0.0544980
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3506,6 +3506,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 natural gas
@@ -3555,8 +3557,6 @@ ar6
 <td style="text-align:right;">
 5.3117100
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3567,6 +3567,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 natural gasoline
@@ -3616,8 +3618,6 @@ ar6
 <td style="text-align:right;">
 7.3889440
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3628,6 +3628,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 north american hardwood
@@ -3677,8 +3679,6 @@ ar6
 <td style="text-align:right;">
 93.8712800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3689,6 +3689,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 north american softwood
@@ -3738,8 +3740,6 @@ ar6
 <td style="text-align:right;">
 94.5712800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3750,6 +3750,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 other biomass gases
@@ -3799,8 +3801,6 @@ ar6
 <td style="text-align:right;">
 0.0342812
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3811,6 +3811,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 other oil (&gt;401 deg f)
@@ -3860,8 +3862,6 @@ ar6
 <td style="text-align:right;">
 10.6243560
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3872,6 +3872,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 peat
@@ -3921,8 +3923,6 @@ ar6
 <td style="text-align:right;">
 911.9108000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3933,6 +3933,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 pentanes plus
@@ -3982,8 +3984,6 @@ ar6
 <td style="text-align:right;">
 7.7289440
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3994,6 +3994,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 petrochemical feedstocks
@@ -4043,8 +4045,6 @@ ar6
 <td style="text-align:right;">
 8.9131640
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4055,6 +4055,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 petroleum coke (solid)
@@ -4104,8 +4106,6 @@ ar6
 <td style="text-align:right;">
 3135.0060000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4116,6 +4116,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 plastics
@@ -4165,8 +4167,6 @@ ar6
 <td style="text-align:right;">
 2929.9168000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4177,6 +4177,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 propane
@@ -4226,8 +4228,6 @@ ar6
 <td style="text-align:right;">
 5.7416960
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4238,6 +4238,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 propane gas
@@ -4287,8 +4289,6 @@ ar6
 <td style="text-align:right;">
 0.1552672
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4299,6 +4299,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 propylene
@@ -4348,8 +4350,6 @@ ar6
 <td style="text-align:right;">
 6.1916960
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4360,6 +4360,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 rendered animal fat
@@ -4409,8 +4411,6 @@ ar6
 <td style="text-align:right;">
 8.8869020
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4421,6 +4421,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 residual fuel oil
@@ -4470,8 +4472,6 @@ ar6
 <td style="text-align:right;">
 11.3079800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4482,6 +4482,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 residual fuel oil no. 5
@@ -4531,8 +4533,6 @@ ar6
 <td style="text-align:right;">
 10.2443560
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4543,6 +4543,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 residual fuel oil no. 6
@@ -4592,8 +4594,6 @@ ar6
 <td style="text-align:right;">
 11.3079800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4604,6 +4604,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 solid byproducts
@@ -4653,8 +4655,6 @@ ar6
 <td style="text-align:right;">
 1117.9056000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4665,6 +4665,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 special naphtha
@@ -4714,8 +4716,6 @@ ar6
 <td style="text-align:right;">
 9.0731640
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4726,6 +4726,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 steam
@@ -4775,8 +4777,6 @@ ar6
 <td style="text-align:right;">
 0.0664014
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4787,6 +4787,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 steam
@@ -4836,8 +4838,6 @@ ar6
 <td style="text-align:right;">
 66.4013750
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4848,6 +4848,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 steam
@@ -4897,8 +4899,6 @@ ar6
 <td style="text-align:right;">
 6.6401375
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4909,6 +4909,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 straw
@@ -4958,8 +4960,6 @@ ar6
 <td style="text-align:right;">
 95.2712800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4970,6 +4970,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 sub-bituminous
@@ -5019,8 +5021,6 @@ ar6
 <td style="text-align:right;">
 1689.3060000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5031,6 +5031,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 tires
@@ -5080,8 +5082,6 @@ ar6
 <td style="text-align:right;">
 2465.9148000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5092,6 +5092,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 unfinished oils
@@ -5141,8 +5143,6 @@ ar6
 <td style="text-align:right;">
 10.3943560
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5153,6 +5153,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 upstream t&amp;d
@@ -5203,8 +5205,6 @@ ar6
 <td style="text-align:right;">
 0.4084680
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5215,6 +5215,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 upstream t&amp;d
@@ -5265,8 +5267,6 @@ ar6
 <td style="text-align:right;">
 1.3704468
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5277,6 +5277,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 upstream t&amp;d
@@ -5327,8 +5329,6 @@ ar6
 <td style="text-align:right;">
 0.3080405
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5339,6 +5339,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 used oil
@@ -5388,8 +5390,6 @@ ar6
 <td style="text-align:right;">
 10.2440580
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5400,6 +5400,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 vegetable oil
@@ -5449,8 +5451,6 @@ ar6
 <td style="text-align:right;">
 9.7966040
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5461,6 +5461,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2023
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 wood and wood residuals
@@ -5510,8 +5512,6 @@ ar6
 <td style="text-align:right;">
 1660.9538000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5522,6 +5522,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 agricultural byproducts
@@ -5571,8 +5573,6 @@ ar6
 <td style="text-align:right;">
 992.4222000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5583,6 +5583,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 anthracite
@@ -5632,8 +5634,6 @@ ar6
 <td style="text-align:right;">
 2621.1448000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5644,6 +5644,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 asphalt and road oil
@@ -5693,8 +5695,6 @@ ar6
 <td style="text-align:right;">
 11.9485760
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5705,6 +5705,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 aviation gasoline
@@ -5754,8 +5756,6 @@ ar6
 <td style="text-align:right;">
 8.3398380
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5766,6 +5766,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 aviation gasoline
@@ -5815,8 +5817,6 @@ ar6
 <td style="text-align:right;">
 8.3398380
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5827,6 +5827,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 bagasse
@@ -5876,8 +5878,6 @@ ar6
 <td style="text-align:right;">
 95.6712800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5888,6 +5888,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 bamboo
@@ -5937,8 +5939,6 @@ ar6
 <td style="text-align:right;">
 93.8712800
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5949,6 +5949,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 biodiesel (100%)
@@ -5998,8 +6000,6 @@ ar6
 <td style="text-align:right;">
 9.4569020
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -6010,6 +6010,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 biodiesel (100%)
@@ -6059,8 +6061,6 @@ ar6
 <td style="text-align:right;">
 9.4569020
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -6071,6 +6071,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 bituminous
@@ -6120,8 +6122,6 @@ ar6
 <td style="text-align:right;">
 2344.0852000
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -6132,6 +6132,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 blast furnace gas
@@ -6181,8 +6183,6 @@ ar6
 <td style="text-align:right;">
 0.0252425
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -6193,6 +6193,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 business travel
@@ -6243,8 +6245,6 @@ ar6
 <td style="text-align:right;">
 0.3967272
 </td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -6255,6 +6255,8 @@ EPA CCCL Emission Factors for GHG Inventories
 </td>
 <td style="text-align:right;">
 2024
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 business travel
@@ -6304,8 +6306,6 @@ ar6
 </td>
 <td style="text-align:right;">
 1.3086075
-</td>
-<td style="text-align:left;">
 </td>
 </tr>
 </tbody>
