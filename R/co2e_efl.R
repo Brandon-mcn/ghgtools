@@ -53,7 +53,7 @@ co2e_efl <- function(GWP, EFL = EFLibrary){
   EFL_co2e[, year := as.numeric(year)]
   EFL_co2e[, ef_publishdate := as.Date(ef_publishdate)]
   EFL_co2e[is.na(EFL_co2e)] <- ""
-  setcolorder(EFL_co2e, c("ef_source", "ef_publishdate", "year", "service_type", "unit",
+  setcolorder(EFL_co2e, c("ef_source", "ef_publishdate", "year", "supplier", "service_type", "unit",
                           "emission_category", "service_subcategory1", "service_subcategory2",
                           "emission_scope", "country", "subregion", "co2_kgperunit", "ch4_kgperunit",
                           "n2o_kgperunit", "otherghgs_kgco2eperunit", "gwps_ar", "co2_gwp",
